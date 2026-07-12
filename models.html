@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Models &amp; Makers - AI Explained</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a class="brand" href="index.html">🤖 AI Explained</a>
+    <a class="navlink" href="index.html">Home</a>
+    <a class="navlink" href="tokens.html">Tokens</a>
+    <a class="navlink" href="training.html">Training</a>
+    <a class="navlink" href="using-ai.html">Using AI</a>
+    <a class="navlink" href="agents.html">Agents</a>
+    <a class="navlink active" href="models.html">Models</a>
+    <a class="navlink" href="australians.html">Australians</a>
+    <a class="navlink" href="safety.html">Safe Use</a>
+    <a class="navlink" href="final-challenge.html">Challenge</a>
+    <a class="navlink" href="glossary.html">Glossary</a>
+  </div>
+</nav>
+
+<main>
+  <h1>Models &amp; Makers: Who Built What, and Which Tool to Pick</h1>
+  <p class="lead">The famous CEOs are the salespeople. This page covers the researchers whose work actually made modern AI possible, then compares three tools you're likely to meet - <strong>Microsoft 365 Copilot</strong>, <strong>Claude</strong>, and <strong>OpenAI Codex</strong> - including plans, limits, and how to set each one up.</p>
+
+  <div class="callout warn">
+    <span class="label">Date stamp</span>
+    Plans, prices and setup steps below are accurate <strong>as of 11 July 2026</strong>. This industry moves fast - prices are in USD and change often, so treat this as a snapshot and check the official pages (linked in each section) before paying for anything.
+  </div>
+
+  <h2>Where "AI" came from: a brief history</h2>
+  <p>People often guess the 1960s, but the term is a little older: <strong>"artificial intelligence" was coined in 1955-56 by John McCarthy</strong> for a summer workshop at Dartmouth College, USA. McCarthy, Marvin Minsky, Claude Shannon and Nathaniel Rochester gathered a small group with a gloriously optimistic premise - that "every aspect of learning or any other feature of intelligence can in principle be so precisely described that a machine can be made to simulate it". They thought a summer might crack it. It took seventy years and counting.</p>
+
+  <table>
+    <tr><th style="width:110px">Year</th><th>What happened</th></tr>
+    <tr><td>1950</td><td><strong>Alan Turing</strong> publishes "Computing Machinery and Intelligence", proposing the imitation game (now the "Turing test"): can a machine converse indistinguishably from a human?</td></tr>
+    <tr><td>1956</td><td>The <strong>Dartmouth workshop</strong> - the term "artificial intelligence" is born, and AI becomes a field.</td></tr>
+    <tr><td>1958</td><td><strong>Frank Rosenblatt's perceptron</strong> - the first trainable artificial neuron, ancestor of every neural network including LLMs.</td></tr>
+    <tr><td>1960s - 70s</td><td>Early optimism (chatbot ELIZA, 1966), then the first <strong>"AI winter"</strong> - funding collapses when promises outrun results. A boom-and-bust pattern the field repeats.</td></tr>
+    <tr><td>1986</td><td><strong>Backpropagation</strong> popularised by Rumelhart, Hinton and Williams - the training algorithm (the "nudge the dials" step from <a href="training.html">Part 2</a>) still used today.</td></tr>
+    <tr><td>1997</td><td>IBM's <strong>Deep Blue</strong> beats world chess champion Garry Kasparov - brute-force search, not learning, but a landmark.</td></tr>
+    <tr><td>2012</td><td><strong>AlexNet</strong> (Krizhevsky, Sutskever, Hinton) demolishes the ImageNet image-recognition contest using a deep neural network on gaming GPUs - the deep-learning era begins.</td></tr>
+    <tr><td>2017</td><td>Google's <strong>Transformer</strong> paper (below) - the architecture of every modern LLM.</td></tr>
+    <tr><td>2022</td><td><strong>ChatGPT</strong> launches and reaches 100 million users in two months - AI goes mainstream.</td></tr>
+  </table>
+
+  <p>Two things worth noticing in that timeline: nearly seventy years passed between the idea and the product in your pocket - and the same three ingredients unlocked it in the end: better algorithms (Transformers), more data (the internet), and more computing power (GPUs).</p>
+
+  <h2>The actual makers (not the front men)</h2>
+  <p>Sam Altman didn't invent GPT any more than a record label CEO writes the songs. Here's the research lineage that matters:</p>
+
+  <h3>The foundation everyone builds on</h3>
+  <div class="card">
+    <p style="margin-top:0"><img class="logo" src="https://www.google.com/s2/favicons?domain=google.com&sz=64" alt="Google logo"><strong>The Transformer (2017)</strong> - the architecture inside every model on this page - came from eight Google researchers: <strong>Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan Gomez, Łukasz Kaiser and Illia Polosukhin</strong>, in the paper <em>"Attention Is All You Need"</em>. All eight later left Google, mostly to found their own AI companies (Shazeer co-founded Character.AI; Gomez co-founded Cohere).</p>
+    <p style="margin-bottom:0">The "T" in GPT stands for Transformer. Without this paper, none of the tools below exist.</p>
+  </div>
+
+  <h3><img class="logo" src="https://www.google.com/s2/favicons?domain=openai.com&sz=64" alt="OpenAI logo">OpenAI (GPT models, ChatGPT, Codex)</h3>
+  <p><strong>Alec Radford</strong> was first author on the original GPT-1 and GPT-2 papers - arguably the single person most responsible for the GPT line existing. <strong>Ilya Sutskever</strong> (co-founder and long-time chief scientist, previously a deep-learning pioneer under Geoffrey Hinton) set the research direction for years; <strong>Jakub Pachocki</strong> succeeded him as chief scientist in 2024. The original 2021 Codex model - the ancestor of today's Codex product and of GitHub Copilot - was led by researchers including <strong>Mark Chen</strong> (now OpenAI's chief research officer) and <strong>Wojciech Zaremba</strong>. The technique that turned raw GPT into chatty ChatGPT (RLHF, from <a href="training.html">Part 2</a>) traces heavily to alignment researcher <strong>Paul Christiano</strong> and colleagues.</p>
+
+  <h3><img class="logo" src="https://www.google.com/s2/favicons?domain=claude.ai&sz=64" alt="Anthropic Claude logo">Anthropic (Claude)</h3>
+  <p>Anthropic was founded in 2021 by a group who left OpenAI. <strong>Dario Amodei</strong> is the public face, but the founding technical bench matters more: <strong>Tom Brown</strong> (lead author of the GPT-3 paper - he built the thing at OpenAI first), <strong>Jared Kaplan</strong> (the physicist behind "scaling laws" - the discovery that models predictably improve as you make them bigger, which justified the whole industry's spending), <strong>Chris Olah</strong> (the leading figure in interpretability - the science of looking inside a model to see what it's actually doing), plus <strong>Sam McCandlish, Ben Mann, Jack Clark</strong> and <strong>Daniela Amodei</strong>. Claude's signature training method, Constitutional AI, came from Anthropic researchers including <strong>Yuntao Bai</strong>.</p>
+
+  <h3><img class="logo" src="https://www.google.com/s2/favicons?domain=microsoft.com&sz=64" alt="Microsoft logo">Microsoft Copilot</h3>
+  <p>Here's the twist: Microsoft didn't build the brain. <strong>Copilot runs on OpenAI's models</strong> (with Microsoft's own and Anthropic's models increasingly mixed in) - Microsoft's engineering contribution is the plumbing that connects those models to your Word documents, emails, spreadsheets and Teams chats (a system it calls the "Copilot orchestrator" with the Microsoft Graph). The Copilot <em>concept</em> was proven by <img class="logo" src="https://www.google.com/s2/favicons?domain=github.com&sz=64" alt="GitHub logo">GitHub Copilot (2021), created by GitHub's research arm under <strong>Oege de Moor</strong>, with <strong>Alex Graveley</strong> as its principal creator and namer. Microsoft's consumer AI is now led by <strong>Mustafa Suleyman</strong> (DeepMind co-founder) - though he's arguably a front man too.</p>
+
+  <div class="analogy">
+    Think of it like a band. The CEOs are the managers doing interviews. Vaswani and the Transformer authors wrote the hit song everyone covers. Radford, Brown, and Kaplan are the session musicians who actually recorded the albums. Microsoft, meanwhile, runs the biggest venue and licenses the music.
+  </div>
+
+  <h3>Explore the people and papers</h3>
+  <div class="card">
+    <p style="margin-top:0"><strong>The founding papers</strong> (all free to read - abstracts are surprisingly approachable):</p>
+    <p>
+      <a href="https://arxiv.org/abs/1706.03762">"Attention Is All You Need" (2017)</a> - the Transformer paper by Vaswani, Shazeer &amp; co ·
+      <a href="https://cdn.openai.com/research-covers/language-unsupervised/language_understanding_paper.pdf">GPT-1 (2018)</a> and <a href="https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf">GPT-2 (2019)</a> - Alec Radford's papers that started the GPT line ·
+      <a href="https://arxiv.org/abs/2005.14165">GPT-3, "Language Models are Few-Shot Learners" (2020)</a> - Tom Brown, first author ·
+      <a href="https://arxiv.org/abs/2001.08361">"Scaling Laws for Neural Language Models" (2020)</a> - Jared Kaplan &amp; Sam McCandlish ·
+      <a href="https://arxiv.org/abs/2107.03374">The Codex paper (2021)</a> - Mark Chen &amp; co, the ancestor of GitHub Copilot ·
+      <a href="https://arxiv.org/abs/2212.08073">"Constitutional AI" (2022)</a> - Yuntao Bai &amp; Anthropic, how Claude is trained ·
+      <a href="https://arxiv.org/abs/2203.02155">InstructGPT (2022)</a> - the RLHF paper that made ChatGPT possible
+    </p>
+    <p><strong>The people, in their own words:</strong></p>
+    <p style="margin-bottom:0">
+      <a href="https://colah.github.io/">Chris Olah's blog</a> and <a href="https://transformer-circuits.pub/">Transformer Circuits</a> - the best window into what's actually inside a model ·
+      <a href="https://distill.pub/">Distill</a> - beautifully visual ML research Olah co-founded ·
+      <a href="https://www.anthropic.com/company">Anthropic's team page</a> ·
+      <a href="https://openai.com/research/">OpenAI research index</a> ·
+      <a href="https://githubnext.com/">GitHub Next</a> - the lab that built GitHub Copilot ·
+      <a href="https://www.youtube.com/watch?v=aircAruvnKk">3Blue1Brown's neural network series</a> - the gentlest visual explanation of how any of this works
+    </p>
+  </div>
+
+  <h2>The three tools compared</h2>
+  <p>These three products do quite different jobs, so "which is best" depends entirely on the task:</p>
+
+  <table>
+    <tr><th></th><th><img class="logo" src="https://www.google.com/s2/favicons?domain=microsoft.com&sz=64" alt="Microsoft logo">Microsoft 365 Copilot</th><th><img class="logo" src="https://www.google.com/s2/favicons?domain=claude.ai&sz=64" alt="Anthropic Claude logo">Claude</th><th><img class="logo" src="https://www.google.com/s2/favicons?domain=openai.com&sz=64" alt="OpenAI logo">OpenAI Codex</th></tr>
+    <tr>
+      <td><strong>What it is</strong></td>
+      <td>AI woven into Word, Excel, Outlook, PowerPoint and Teams</td>
+      <td>General-purpose AI assistant (chat, documents, analysis, coding)</td>
+      <td>An agentic <em>coding</em> tool that edits files and runs commands in your projects. Since <strong>9 July 2026</strong> it's no longer a separate app - it's a dedicated mode inside the ChatGPT desktop app, alongside Chat and the new "Work" mode</td>
+    </tr>
+    <tr>
+      <td><strong>Underlying models</strong></td>
+      <td>OpenAI GPT models + Microsoft/Anthropic models (you don't choose)</td>
+      <td>Anthropic's Claude family (Haiku = fast/cheap, Sonnet = balanced, Opus/Fable = most capable)</td>
+      <td>OpenAI's GPT-5.5-era coding models</td>
+    </tr>
+    <tr>
+      <td><strong>Best for</strong></td>
+      <td>Office work: drafting emails, summarising meetings, building slides from documents, Excel analysis - if you live in Microsoft 365, it's the lowest-friction option</td>
+      <td>Long documents, careful writing, explanation and tutoring, coding (Claude Code), tasks needing large context windows; widely rated the strongest for code and nuanced writing</td>
+      <td>Software development specifically: fixing bugs, building features, reviewing code across whole repositories, and delegating coding tasks to run in the background</td>
+    </tr>
+    <tr>
+      <td><strong>Weakest at</strong></td>
+      <td>Anything outside Microsoft's apps; you can't pick the model; quality varies by app (strong in Teams/Outlook, patchier in Excel)</td>
+      <td>No native deep hooks into Office files the way Copilot has (it works with files, but isn't embedded in the apps)</td>
+      <td>It's not a general assistant - it's for code. Non-programmers won't get much from it</td>
+    </tr>
+    <tr>
+      <td><strong>You'd pick it if…</strong></td>
+      <td>Your work revolves around Outlook, Teams and Office documents</td>
+      <td>You want the best general thinking/writing/coding partner</td>
+      <td>You're a developer (or learning to be one - hello, C# students) who wants AI working <em>inside</em> your codebase</td>
+    </tr>
+  </table>
+
+  <h2>Plans and limits - as of 11 July 2026</h2>
+
+  <h3><img class="logo" src="https://www.google.com/s2/favicons?domain=microsoft.com&sz=64" alt="Microsoft logo">Microsoft 365 Copilot</h3>
+  <table>
+    <tr><th>Plan</th><th>Price (USD)</th><th>What you get / constraints</th></tr>
+    <tr><td>Copilot Chat (free)</td><td>$0</td><td>Web-grounded chat and limited in-app features. <strong>Does not connect to your own emails, files, calendar or Teams data</strong> - that's the paid product's whole advantage.</td></tr>
+    <tr><td>Microsoft 365 Premium (individuals)</td><td>~$19.99/mo</td><td>Copilot inside Office apps for one person (replaced the old Copilot Pro plan).</td></tr>
+    <tr><td>Copilot Business (SMB)</td><td>~$18-21/user/mo</td><td>For businesses up to 300 users; requires an underlying Microsoft 365 licence.</td></tr>
+    <tr><td>Microsoft 365 Copilot (enterprise)</td><td>~$30/user/mo</td><td>Full workplace-data integration via Microsoft Graph. Also requires a base Microsoft 365 subscription.</td></tr>
+  </table>
+  <p><strong>Key limitations:</strong> it's never standalone - you must already pay for Microsoft 365. You can't choose which model answers you. Output quality depends on how tidy your organisation's data is (it can only ground answers in what it can find). And the free Copilot Chat sounds similar but skips the workplace-data integration that justifies the price.</p>
+
+  <h3><img class="logo" src="https://www.google.com/s2/favicons?domain=claude.ai&sz=64" alt="Anthropic Claude logo">Claude (Anthropic)</h3>
+  <table>
+    <tr><th>Plan</th><th>Price (USD)</th><th>What you get / constraints</th></tr>
+    <tr><td>Free</td><td>$0</td><td>Access to a mid-tier model (Sonnet) with daily message limits that reset every few hours. No access to the top models.</td></tr>
+    <tr><td>Pro</td><td>$20/mo</td><td>~5× free usage, top models (Opus/Fable class), Projects, and Claude Code on a starter allowance. Limits work as a rolling ~5-hour budget, not a fixed message count.</td></tr>
+    <tr><td>Max</td><td>$100 or $200/mo</td><td>5× or 20× Pro usage - aimed at heavy Claude Code / agentic use. Weekly caps sit on top of session caps.</td></tr>
+    <tr><td>Team / Enterprise</td><td>from ~$25/seat/mo</td><td>Shared workspaces, admin controls, higher limits.</td></tr>
+  </table>
+  <p><strong>Key limitations:</strong> usage limits are the big one - heavy users hit the 5-hour budget, and complex requests (long documents, big code tasks) burn it faster. Limits are deliberately vague ("about 45 messages per 5 hours" on Pro, varying with length). No usage rollover between sessions.</p>
+
+  <h3><img class="logo" src="https://www.google.com/s2/favicons?domain=openai.com&sz=64" alt="OpenAI logo">OpenAI Codex</h3>
+  <table>
+    <tr><th>Plan</th><th>Price (USD)</th><th>What you get / constraints</th></tr>
+    <tr><td>ChatGPT Free / Go</td><td>$0 / $8/mo</td><td>Since the 9 July 2026 merger, Codex is available on every ChatGPT plan (including Free) via the desktop app - but with small allowances at the bottom tiers.</td></tr>
+    <tr><td>ChatGPT Plus</td><td>$20/mo</td><td>Meaningful Codex usage for a solo developer, sharing a 5-hour rolling limit across local and cloud tasks, plus weekly caps.</td></tr>
+    <tr><td>ChatGPT Pro</td><td>$100 or $200/mo</td><td>Multiplied limits for running many tasks or background agents; heavy professional use often lands in the $100-200/mo range in practice.</td></tr>
+    <tr><td>API (pay-as-you-go)</td><td>per token</td><td>No subscription - pay for exactly what you use; costs scale unpredictably with heavy agentic work.</td></tr>
+  </table>
+  <p><strong>Key limitations:</strong> it's a coding tool - its value assumes you have a codebase to point it at. Local and cloud usage share the same limit pool. And like all agents (<a href="agents.html">Part 4</a>), it can confidently make wrong <em>changes</em>, so code review remains your job.</p>
+
+  <h2>Getting set up - as of 11 July 2026</h2>
+
+  <h3><img class="logo" src="https://www.google.com/s2/favicons?domain=microsoft.com&sz=64" alt="Microsoft logo">Microsoft 365 Copilot</h3>
+  <div class="card">
+    <p style="margin-top:0"><strong>As an individual:</strong> sign in at <a href="https://copilot.microsoft.com">copilot.microsoft.com</a> with any Microsoft account for the free Copilot Chat. For Copilot inside Word/Excel/Outlook, subscribe to Microsoft 365 Premium from your Microsoft account page - the Copilot button then appears in the ribbon of each Office app automatically.</p>
+    <p style="margin-bottom:0"><strong>At work/uni:</strong> you can't self-serve - an administrator buys Copilot licences in the Microsoft 365 admin centre and assigns one to your account. If the Copilot button is missing from your Office apps, that's the reason: ask your IT admin. (Swinburne students: check what your uni account includes before paying for anything.)</p>
+  </div>
+
+  <h3><img class="logo" src="https://www.google.com/s2/favicons?domain=claude.ai&sz=64" alt="Anthropic Claude logo">Claude</h3>
+  <div class="card">
+    <p style="margin-top:0"><strong>Chat:</strong> go to <a href="https://claude.ai">claude.ai</a>, sign up with email or Google - free tier works immediately, upgrade to Pro in Settings if you hit limits. Mobile and desktop apps are on the usual app stores.</p>
+    <p style="margin-bottom:0"><strong>Claude Code (for developers):</strong> requires Node.js. In a terminal run <code>npm install -g @anthropic-ai/claude-code</code>, then <code>claude</code> inside a project folder, and sign in with your claude.ai account when prompted. Pro includes a starter allowance; Max is for daily heavy use.</p>
+  </div>
+
+  <h3><img class="logo" src="https://www.google.com/s2/favicons?domain=openai.com&sz=64" alt="OpenAI logo">OpenAI Codex</h3>
+  <div class="card">
+    <p style="margin-top:0"><strong>Heads up - this changed on 9 July 2026:</strong> the standalone Codex app merged into the new ChatGPT desktop app. If you find older guides describing a separate Codex app, they're already out of date.</p>
+    <p><strong>Easiest path:</strong> install the ChatGPT desktop app (Mac or Windows) from <a href="https://chatgpt.com">chatgpt.com</a> and sign in - Codex is a mode inside it, next to Chat and Work, on every plan including Free. Codex Cloud can also work on GitHub repositories you connect.</p>
+    <p style="margin-bottom:0"><strong>CLI (local, for terminal users):</strong> requires Node.js. Run <code>npm install -g @openai/codex</code>, then <code>codex</code> in a project folder and sign in with your ChatGPT account. IDE extensions for VS Code and similar editors work the same way - search "Codex" in the extensions marketplace.</p>
+  </div>
+
+  <div class="callout tip">
+    <span class="label">Honest advice for a beginner</span>
+    Start free on all three before paying: free Claude, free ChatGPT/Codex, free Copilot Chat. Pay only when you hit limits doing real work. For your C# study specifically, Claude Pro or ChatGPT Plus (~$20/mo, roughly A$30) with its coding tool is far better value than Copilot 365, which shines mainly when an employer pays for it.
+  </div>
+
+  <h2>Sources</h2>
+  <p style="font-size:0.9rem">Pricing and limit details checked 11 July 2026 against:
+    <a href="https://claude.com/pricing">Claude pricing</a> ·
+    <a href="https://intuitionlabs.ai/articles/claude-max-plan-pricing-usage-limits">Claude plan limits</a> ·
+    <a href="https://chatgpt.com/pricing/">ChatGPT plans</a> ·
+    <a href="https://help.openai.com/en/articles/11369540-using-codex-with-your-chatgpt-plan">Codex with ChatGPT plans</a> ·
+    <a href="https://chatgpt.com/codex/pricing/">Codex pricing</a> ·
+    <a href="https://developers.openai.com/codex/changelog">Codex changelog (9 July 2026 merger)</a> ·
+    <a href="https://www.microsoft.com/en-us/microsoft-365-copilot/pricing">Microsoft 365 Copilot pricing</a> ·
+    <a href="https://support.microsoft.com/en-us/topic/what-s-the-difference-between-microsoft-copilot-free-and-copilot-in-microsoft-365-cfff4791-694a-4d90-9c9c-1eb3fb28e842">Copilot free vs paid</a>
+  </p>
+
+  <div class="pager">
+    <a href="agents.html"><span class="dir">← Previous</span> Part 4: Agents</a>
+    <a href="australians.html"><span class="dir">Next →</span> Notable Australians in AI</a>
+  </div>
+</main>
+
+<footer>Made as a learning resource · Hosted on GitHub Pages</footer>
+<script src="quiz.js"></script>
+</body>
+</html>

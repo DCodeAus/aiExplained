@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Final Challenge - AI Explained</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a class="brand" href="index.html">🤖 AI Explained</a>
+    <a class="navlink" href="index.html">Home</a>
+    <a class="navlink" href="tokens.html">Tokens</a>
+    <a class="navlink" href="training.html">Training</a>
+    <a class="navlink" href="using-ai.html">Using AI</a>
+    <a class="navlink" href="agents.html">Agents</a>
+    <a class="navlink" href="models.html">Models</a>
+    <a class="navlink" href="australians.html">Australians</a>
+    <a class="navlink" href="safety.html">Safe Use</a>
+    <a class="navlink active" href="final-challenge.html">Challenge</a>
+    <a class="navlink" href="glossary.html">Glossary</a>
+  </div>
+</nav>
+
+<main>
+  <h1>🏁 The Final Challenge: Do One Real Thing</h1>
+  <p class="lead">Reading about AI is like reading about swimming. This last level gets you in the water - one real task, from your actual life, done properly with a free AI tool. Beat it and you earn the final badge.</p>
+
+  <h2>The challenge</h2>
+  <p>Pick <strong>one real task from your week</strong> - something you'd have to do anyway. Good candidates: draft a tricky email, plan a study schedule, understand a confusing document, debug a piece of code, plan a trip, or explain a concept you're studying. Then work through the steps below with any free AI tool (<a href="https://claude.ai"><img class="logo" src="https://www.google.com/s2/favicons?domain=claude.ai&sz=64" alt="Claude logo">Claude</a>, <a href="https://chatgpt.com"><img class="logo" src="https://www.google.com/s2/favicons?domain=openai.com&sz=64" alt="ChatGPT logo">ChatGPT</a>, or <a href="https://copilot.microsoft.com"><img class="logo" src="https://www.google.com/s2/favicons?domain=microsoft.com&sz=64" alt="Microsoft Copilot logo">Copilot</a> - see <a href="models.html">Models</a>).</p>
+  <p>Tick each step off as you complete it - this page remembers your progress. Each step names the part of the guide it puts into practice.</p>
+
+  <div class="demo">
+    <div class="demo-title">🏁 Challenge checklist - complete all six to earn the final badge</div>
+    <div class="loop-steps" id="cap-steps"></div>
+    <output id="cap-result" style="text-align:center;font-size:1.05rem"></output>
+  </div>
+
+  <h2>Level-up questions (optional, but where the gold is)</h2>
+  <p>Once you're done, consider: Where did the AI genuinely save you time, and where did it slow you down? What did it get wrong, and would you have caught the error without this guide? Did your second, more specific prompt produce visibly better output than your first - and what does that tell you about how you'll prompt next time?</p>
+
+  <div class="callout tip">
+    <span class="label">What now?</span>
+    Repeat this loop with real tasks for two weeks and you'll be more capable with AI than the vast majority of users - not because you know secret tricks, but because you understand what the machine is actually doing. That was the whole point of this site. Go well.
+  </div>
+
+  <div class="pager">
+    <a href="safety.html"><span class="dir">← Previous</span> Part 5: Safe &amp; Honest Use</a>
+    <a href="glossary.html"><span class="dir">Next →</span> Glossary</a>
+  </div>
+</main>
+
+<footer>Made as a learning resource · Hosted on GitHub Pages</footer>
+<script src="quiz.js"></script>
+<script>
+(function () {
+  var STEPS = [
+    ["Pick a real task", "Choose something you genuinely need to do this week - not a toy example. Write down what a good result looks like <em>before</em> you start."],
+    ["Write a specific first prompt", "Include context (who you are, what it's for), the format you want, and any constraints - length, tone, audience. <a href='using-ai.html'>Part 3</a> in action."],
+    ["Iterate at least twice", "Reply to the first draft with specific feedback: 'shorter', 'more formal', 'explain point 2 differently'. Notice the draft improving - you're steering a next-token predictor (<a href='training.html'>Part 2</a>)."],
+    ["Verify one specific claim", "Find one name, number, date or fact in the output and check it against a real source. Hallucinations hide in specifics - this habit is the whole defence."],
+    ["Respect the boundaries", "Confirm you didn't paste anything from the never-paste list, and (if it's study work) that your use passes the tutor-vs-ghostwriter test from <a href='safety.html'>Part 5</a>."],
+    ["Ship it", "Actually use the result - send the email, follow the plan, submit the fixed code. AI work only counts when it lands in the real world."]
+  ];
+  var KEY = "aiex-capstone-v1";
+  var saved;
+  try { saved = JSON.parse(localStorage.getItem(KEY)) || []; } catch (e) { saved = []; }
+
+  var wrap = document.getElementById("cap-steps");
+  var result = document.getElementById("cap-result");
+
+  function checkDone() {
+    var boxes = wrap.querySelectorAll("input[type=checkbox]");
+    var done = Array.prototype.every.call(boxes, function (b) { return b.checked; });
+    if (done) {
+      result.innerHTML = "🏁 <strong>Challenge complete!</strong> You've finished the course.";
+      if (window.AIEX && AIEX.award("capstone-complete", 25)) {
+        AIEX.confetti();
+        AIEX.floatPoints(result, 25);
+      }
+    } else {
+      var n = Array.prototype.filter.call(boxes, function (b) { return b.checked; }).length;
+      result.textContent = n + " of " + STEPS.length + " steps done";
+    }
+  }
+
+  STEPS.forEach(function (step, i) {
+    var div = document.createElement("div");
+    div.className = "loop-step";
+    div.style.opacity = "1";
+    var checked = saved[i] ? " checked" : "";
+    div.innerHTML = "<label style='display:flex;gap:12px;align-items:flex-start;cursor:pointer'>" +
+      "<input type='checkbox' style='margin-top:5px;width:18px;height:18px;accent-color:var(--accent)'" + checked + ">" +
+      "<span><span class='step-label'>Step " + (i + 1) + ": " + step[0] + "</span><br>" + step[1] + "</span></label>";
+    wrap.appendChild(div);
+  });
+
+  wrap.addEventListener("change", function () {
+    var boxes = wrap.querySelectorAll("input[type=checkbox]");
+    var states = Array.prototype.map.call(boxes, function (b) { return b.checked; });
+    try { localStorage.setItem(KEY, JSON.stringify(states)); } catch (e) {}
+    checkDone();
+  });
+
+  checkDone();
+})();
+</script>
+</body>
+</html>

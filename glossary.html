@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glossary - AI Explained</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a class="brand" href="index.html">🤖 AI Explained</a>
+    <a class="navlink" href="index.html">Home</a>
+    <a class="navlink" href="tokens.html">Tokens</a>
+    <a class="navlink" href="training.html">Training</a>
+    <a class="navlink" href="using-ai.html">Using AI</a>
+    <a class="navlink" href="agents.html">Agents</a>
+    <a class="navlink" href="models.html">Models</a>
+    <a class="navlink" href="australians.html">Australians</a>
+    <a class="navlink" href="safety.html">Safe Use</a>
+    <a class="navlink" href="final-challenge.html">Challenge</a>
+    <a class="navlink active" href="glossary.html">Glossary</a>
+  </div>
+</nav>
+
+<main>
+  <h1>Glossary</h1>
+  <p class="lead">Every jargon term from this guide (plus a few you'll meet in the wild), in plain English.</p>
+
+  <table>
+    <tr><th style="width:190px">Term</th><th>Plain-English meaning</th></tr>
+    <tr><td><strong>Agent</strong></td><td>An LLM running in a loop with access to tools, so it can take multiple steps and perform actions (search, run code, send messages) to complete a task. See <a href="agents.html">Part 4</a>.</td></tr>
+    <tr><td><strong>AI (artificial intelligence)</strong></td><td>Umbrella term for computer systems doing things that normally need human intelligence. LLMs are one kind of AI.</td></tr>
+    <tr><td><strong>Context window</strong></td><td>The maximum amount of text (in tokens) a model can consider at once - its working memory. See <a href="using-ai.html">Part 3</a>.</td></tr>
+    <tr><td><strong>Fine-tuning</strong></td><td>Additional training on a curated dataset to shape a model's behaviour - e.g. teaching a raw model to act like a helpful assistant. See <a href="training.html">Part 2</a>.</td></tr>
+    <tr><td><strong>Function calling / tool use</strong></td><td>The mechanism letting a model request an action (like a web search); external software runs it and feeds the result back. See <a href="agents.html">Part 4</a>.</td></tr>
+    <tr><td><strong>GPU</strong></td><td>Graphics processing unit - the specialised chips (originally for video games) that do the heavy maths of training and running models.</td></tr>
+    <tr><td><strong>Hallucination</strong></td><td>When a model produces fluent, confident, incorrect output - invented facts, citations or details. See <a href="using-ai.html">Part 3</a>.</td></tr>
+    <tr><td><strong>Inference</strong></td><td>Running a trained model to get answers (i.e. what happens when you chat with it), as opposed to training it.</td></tr>
+    <tr><td><strong>LLM (large language model)</strong></td><td>A neural network trained on vast amounts of text to predict the next token; the technology behind ChatGPT, Claude, Gemini and similar.</td></tr>
+    <tr><td><strong>MCP (Model Context Protocol)</strong></td><td>An open standard for connecting AI apps to tools and data sources - a universal plug socket. See <a href="agents.html">Part 4</a>.</td></tr>
+    <tr><td><strong>Multimodal</strong></td><td>A model that handles more than text - e.g. it can also see images, or hear audio.</td></tr>
+    <tr><td><strong>Neural network</strong></td><td>The mathematical structure models are built from - layers of simple calculations with adjustable weights, loosely inspired by brain neurons.</td></tr>
+    <tr><td><strong>Open weights / open source model</strong></td><td>A model whose trained parameters are published so anyone can download and run it, rather than accessing it only via a company's service.</td></tr>
+    <tr><td><strong>Parameters / weights</strong></td><td>The billions of adjustable numbers inside a model that get tuned during training; they encode everything it has learnt. See <a href="training.html">Part 2</a>.</td></tr>
+    <tr><td><strong>Pre-training</strong></td><td>The first, biggest training stage: next-token prediction over an enormous text corpus. See <a href="training.html">Part 2</a>.</td></tr>
+    <tr><td><strong>Prompt</strong></td><td>The text you give a model - your question, instructions, and any material you paste in. See <a href="using-ai.html">Part 3</a>.</td></tr>
+    <tr><td><strong>RAG (retrieval-augmented generation)</strong></td><td>Automatically finding relevant documents and giving them to the model alongside your question, so answers are grounded in real sources. See <a href="agents.html">Part 4</a>.</td></tr>
+    <tr><td><strong>Reasoning model</strong></td><td>A model trained to "think" through a problem at length (generating internal working) before giving its final answer; better at maths, logic and planning.</td></tr>
+    <tr><td><strong>RLHF</strong></td><td>Reinforcement learning from human feedback - polishing a model by training it to prefer answers humans rate highly. See <a href="training.html">Part 2</a>.</td></tr>
+    <tr><td><strong>System prompt</strong></td><td>Hidden instructions the app developer gives the model before your conversation starts ("You are a helpful assistant…"), shaping its behaviour.</td></tr>
+    <tr><td><strong>Temperature</strong></td><td>A setting controlling how adventurous the model's token choices are - low is predictable, high is creative/random. See <a href="using-ai.html">Part 3</a>.</td></tr>
+    <tr><td><strong>Token</strong></td><td>The chunk of text (part-word, word, or punctuation) that models actually read and write. Roughly ¾ of a word in English. See <a href="tokens.html">Part 1</a>.</td></tr>
+    <tr><td><strong>Training</strong></td><td>The process of adjusting a model's parameters using huge amounts of data until its predictions are good. See <a href="training.html">Part 2</a>.</td></tr>
+  </table>
+
+  <div class="pager">
+    <a href="final-challenge.html"><span class="dir">← Previous</span> The Final Challenge</a>
+    <a href="index.html"><span class="dir">↑</span> Back to Home</a>
+  </div>
+</main>
+
+<footer>Made as a learning resource · Hosted on GitHub Pages</footer>
+<script src="quiz.js"></script>
+</body>
+</html>

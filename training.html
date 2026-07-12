@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Training: How AI Learns - AI Explained</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a class="brand" href="index.html">🤖 AI Explained</a>
+    <a class="navlink" href="index.html">Home</a>
+    <a class="navlink" href="tokens.html">Tokens</a>
+    <a class="navlink active" href="training.html">Training</a>
+    <a class="navlink" href="using-ai.html">Using AI</a>
+    <a class="navlink" href="agents.html">Agents</a>
+    <a class="navlink" href="models.html">Models</a>
+    <a class="navlink" href="australians.html">Australians</a>
+    <a class="navlink" href="safety.html">Safe Use</a>
+    <a class="navlink" href="final-challenge.html">Challenge</a>
+    <a class="navlink" href="glossary.html">Glossary</a>
+  </div>
+</nav>
+
+<main>
+  <h1>Part 2 - Training: How AI Learns</h1>
+  <p class="lead">A language model starts as a blank slate that knows nothing. Training is how it goes from random noise to writing poetry. The surprising part: the whole process is built on one simple game - <strong>guess the next token</strong>.</p>
+
+  <h2>The prediction game</h2>
+  <p>Cover the end of this sentence and guess the last word: <em>"She poured milk into her bowl of ___"</em>. You almost certainly said "cereal". You've read and heard enough English that your brain has absorbed its patterns.</p>
+  <p>That, at its core, is what an LLM learns to do. During training, the model is shown billions of text snippets with the ending hidden and asked: <em>what token comes next?</em> At first its guesses are random garbage. Each time it guesses wrong, its internal settings - called <strong>parameters</strong> or <strong>weights</strong> - are nudged slightly in the direction that would have made the right answer more likely. Repeat this trillions of times, and the model gets astonishingly good at the game.</p>
+
+  <div class="analogy">
+    It's like a student doing millions of fill-in-the-blank flashcards. No one ever hands them a grammar book or an encyclopaedia. But to get really good at predicting the blank, they're forced to absorb grammar, facts, reasoning styles and even humour - because all of those help predict what comes next.
+  </div>
+
+  <h2>Try the game yourself</h2>
+  <div class="demo">
+    <div class="demo-title">🎮 Game: think like a model</div>
+    <p style="margin-top:0">Play the model's game yourself! For each sentence, click the word you think a model would rate <strong>most likely</strong> to come next - then see the actual probabilities.</p>
+    <select id="pred-select" style="padding:8px 12px;border-radius:8px;background:var(--bg);color:var(--text);border:1px solid var(--border);font-size:0.95rem;max-width:100%">
+      <option value="0">The capital of France is …</option>
+      <option value="1">She poured milk into her bowl of …</option>
+      <option value="2">To be or not to …</option>
+      <option value="3">The weather today is …</option>
+    </select>
+    <div class="word-btns" id="pred-btns"></div>
+    <output id="pred-verdict"></output>
+    <div class="out" id="pred-out"></div>
+    <p style="color:var(--muted);font-size:0.9rem">Notice how some sentences have one overwhelmingly likely answer, while others (like the weather one) are genuinely uncertain. The model outputs <em>probabilities</em>, not a single answer - this matters in <a href="using-ai.html">Part 3</a> when we talk about temperature.</p>
+  </div>
+
+  <h2>What "learning" physically means</h2>
+  <p>A model is essentially an enormous mathematical formula with billions of adjustable dials (the parameters). Modern models have anywhere from a few billion to over a trillion of them. Training is the process of turning those dials, tiny nudge by tiny nudge, until the formula's predictions match real text well.</p>
+  <p>Importantly, the training text itself is <em>not stored</em> inside the model. What's stored is the dial settings. That's why a model can't quote its training data back verbatim on demand - it learnt patterns and associations, not a filing cabinet of documents.</p>
+
+  <div class="callout warn">
+    <span class="label">Common confusion</span>
+    Chatting with an AI does not train it. Training happens in advance, in a data centre, over weeks or months. When you chat, the model's dials are frozen - it's only <em>using</em> what it already learnt. (Companies may later use conversations to train <em>future</em> models, but the one you're talking to isn't learning from you live.)
+  </div>
+
+  <h2>The three stages of building a chatbot</h2>
+  <p>Raw next-token prediction gives you a model that's knowledgeable but wild - ask it a question and it might just continue with <em>more questions</em>, because that's a plausible continuation. Turning it into a helpful assistant takes further stages:</p>
+
+  <svg class="diagram" viewBox="0 0 800 210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Three stages: pretraining, fine-tuning, and reinforcement learning from human feedback">
+    <style>
+      .box2 { fill: var(--surface); stroke: var(--accent); stroke-width: 1.5; }
+      .t1 { fill: var(--text); font-size: 16px; font-weight: bold; font-family: sans-serif; }
+      .t2 { fill: var(--muted); font-size: 12.5px; font-family: sans-serif; }
+      .arr2 { stroke: var(--accent); stroke-width: 2; marker-end: url(#ah2); }
+    </style>
+    <defs>
+      <marker id="ah2" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+        <path d="M0,0 L8,4 L0,8 z" fill="var(--accent)"/>
+      </marker>
+    </defs>
+    <rect class="box2" x="15" y="30" width="230" height="150" rx="12"/>
+    <text class="t1" x="130" y="60" text-anchor="middle">1. Pre-training</text>
+    <text class="t2" x="130" y="88" text-anchor="middle">Predict next token on a huge</text>
+    <text class="t2" x="130" y="106" text-anchor="middle">slice of the internet, books, code</text>
+    <text class="t2" x="130" y="134" text-anchor="middle">Result: knows a lot,</text>
+    <text class="t2" x="130" y="152" text-anchor="middle">but isn't an assistant yet</text>
+    <line class="arr2" x1="250" y1="105" x2="285" y2="105"/>
+    <rect class="box2" x="290" y="30" width="230" height="150" rx="12"/>
+    <text class="t1" x="405" y="60" text-anchor="middle">2. Fine-tuning</text>
+    <text class="t2" x="405" y="88" text-anchor="middle">Trained further on examples of</text>
+    <text class="t2" x="405" y="106" text-anchor="middle">good question → answer pairs</text>
+    <text class="t2" x="405" y="134" text-anchor="middle">Result: behaves like</text>
+    <text class="t2" x="405" y="152" text-anchor="middle">a helpful assistant</text>
+    <line class="arr2" x1="525" y1="105" x2="560" y2="105"/>
+    <rect class="box2" x="565" y="30" width="230" height="150" rx="12"/>
+    <text class="t1" x="680" y="60" text-anchor="middle">3. Human feedback</text>
+    <text class="t2" x="680" y="88" text-anchor="middle">People rate answers; the model is</text>
+    <text class="t2" x="680" y="106" text-anchor="middle">adjusted to prefer highly-rated ones</text>
+    <text class="t2" x="680" y="134" text-anchor="middle">Result: more helpful,</text>
+    <text class="t2" x="680" y="152" text-anchor="middle">safer, more polite</text>
+  </svg>
+
+  <p><strong>Stage 1: Pre-training.</strong> The next-token game, played on a colossal amount of text. This is where the model absorbs language, facts, and reasoning patterns. It's the most expensive stage by far - think thousands of specialised computers running for months.</p>
+  <p><strong>Stage 2: Fine-tuning (instruction tuning).</strong> The model is trained on curated examples of conversations: a question, followed by a genuinely helpful answer. This teaches it the <em>format</em> of being an assistant.</p>
+  <p><strong>Stage 3: Learning from human feedback.</strong> Humans compare pairs of model answers and pick the better one. The model is adjusted to produce more of what people prefer. This is often called <strong>RLHF</strong> (reinforcement learning from human feedback), and it's a big part of why modern chatbots feel polite and cooperative.</p>
+
+  <h2>The secret ingredient: attention</h2>
+  <p>One question we've dodged so far: <em>how</em> does the model use the earlier words to predict the next one? Consider: <em>"The trophy wouldn't fit in the suitcase because <strong>it</strong> was too big."</em> What does "it" refer to? You instantly know it's the trophy - because you weighed every word in the sentence against every other word.</p>
+  <p>That's essentially what <strong>attention</strong> does - the mechanism at the heart of the Transformer architecture (the "T" in GPT, invented at Google in 2017). For every token it processes, the model calculates how much each previous token matters <em>right now</em>, and focuses on the relevant ones. Predicting after "it was too", the model's attention lights up on "trophy" and "fit", not on "the". Stack dozens of layers of this, and the model can track who did what to whom across pages of text.</p>
+  <div class="analogy">
+    Reading the word "it", your eyes don't literally re-read the sentence - but your mind flicks back to "trophy" automatically. Attention is that flick-back, done with arithmetic, for every token, at every layer, all at once.
+  </div>
+  <p>This is why the Transformer replaced everything that came before it: older designs read text one word at a time and slowly forgot the beginning. Attention lets the model consider the whole context simultaneously - which is exactly what made today's large context windows (<a href="using-ai.html">Part 3</a>) possible.</p>
+
+  <h2>Why models make things up</h2>
+  <p>Now you can see where <strong>hallucinations</strong> come from. The model's fundamental job is to produce <em>plausible</em> text, not <em>true</em> text. If you ask about something it saw a lot of in training, plausible and true usually coincide. If you ask about something obscure - a small-town restaurant, a niche court case, a paper that doesn't exist - the model still generates something plausible-<em>sounding</em>, because generating text is all it can do. It has no built-in way to say "no data found" like a database would.</p>
+
+  <div class="callout tip">
+    <span class="label">Key takeaway</span>
+    LLMs learn by playing "guess the next token" on vast amounts of text, then get polished into assistants with human feedback. They store patterns, not documents - which makes them fluent, flexible, and occasionally confidently wrong.
+  </div>
+
+  <div class="quiz" data-quiz="training"></div>
+
+  <div class="pager">
+    <a href="tokens.html"><span class="dir">← Previous</span> Part 1: Tokens</a>
+    <a href="using-ai.html"><span class="dir">Next →</span> Part 3: Using AI Well</a>
+  </div>
+</main>
+
+<footer>Made as a learning resource · Hosted on GitHub Pages</footer>
+
+<script>
+(function () {
+  const DATA = [
+    [["Paris", 92], ["Lyon", 3], ["located", 2], ["beautiful", 2], ["Marseille", 1]],
+    [["cereal", 78], ["porridge", 9], ["milk", 5], ["oats", 5], ["soup", 3]],
+    [["be", 97], ["do", 1], ["live", 1], ["die", 0.7], ["exist", 0.3]],
+    [["sunny", 24], ["cloudy", 21], ["cold", 19], ["beautiful", 15], ["rainy", 14]]
+  ];
+  const sel = document.getElementById("pred-select");
+  const btns = document.getElementById("pred-btns");
+  const verdict = document.getElementById("pred-verdict");
+  const out = document.getElementById("pred-out");
+
+  function shuffle(a) {
+    a = a.slice();
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+
+  function revealBars(rows) {
+    out.innerHTML = "";
+    rows.forEach(([word, pct]) => {
+      const row = document.createElement("div");
+      row.className = "prob-row";
+      row.innerHTML = '<span class="word">' + word + '</span>' +
+        '<div class="bar-track"><div class="bar" style="width:0%"></div></div>' +
+        '<span class="pct">' + pct + '%</span>';
+      out.appendChild(row);
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        row.querySelector(".bar").style.width = pct + "%";
+      }));
+    });
+  }
+
+  function setup() {
+    const idx = +sel.value;
+    const rows = DATA[idx];
+    const top = rows[0][0]; // DATA is sorted, first = most likely
+    btns.innerHTML = "";
+    verdict.textContent = "";
+    out.innerHTML = "";
+    let done = false;
+    shuffle(rows).forEach(([word]) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "word-btn";
+      b.textContent = word;
+      b.addEventListener("click", () => {
+        if (done) return;
+        done = true;
+        const isRight = word === top;
+        b.classList.add(isRight ? "right" : "wrong");
+        btns.querySelectorAll(".word-btn").forEach(x => {
+          x.disabled = true;
+          if (x.textContent === top) x.classList.add("right");
+        });
+        if (isRight) {
+          verdict.innerHTML = "🎯 Correct - you predicted like a model! The most likely next token is <strong>" + top + "</strong>.";
+          if (window.AIEX && AIEX.award("training-pred-" + idx, 10)) AIEX.floatPoints(b, 10);
+        } else {
+          verdict.innerHTML = "The model's top pick is actually <strong>" + top + "</strong>. Here's the full probability picture:";
+        }
+        revealBars(rows);
+      });
+      btns.appendChild(b);
+    });
+  }
+
+  sel.addEventListener("change", setup);
+  setup();
+})();
+</script>
+<script src="quiz.js"></script>
+</body>
+</html>

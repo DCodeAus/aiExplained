@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Explained - A Beginner's Guide to LLMs</title>
+<meta name="description" content="A plain-English guide to how AI and large language models actually work - tokens, training, prompting, and agents.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a class="brand" href="index.html">🤖 AI Explained</a>
+    <a class="navlink active" href="index.html">Home</a>
+    <a class="navlink" href="tokens.html">Tokens</a>
+    <a class="navlink" href="training.html">Training</a>
+    <a class="navlink" href="using-ai.html">Using AI</a>
+    <a class="navlink" href="agents.html">Agents</a>
+    <a class="navlink" href="models.html">Models</a>
+    <a class="navlink" href="australians.html">Australians</a>
+    <a class="navlink" href="safety.html">Safe Use</a>
+    <a class="navlink" href="final-challenge.html">Challenge</a>
+    <a class="navlink" href="glossary.html">Glossary</a>
+  </div>
+</nav>
+
+<main>
+  <h1>AI Explained: A Beginner's Guide to Large Language Models</h1>
+  <p class="lead">No maths degree required. No jargon without a plain-English translation. Just a clear walk through how tools like ChatGPT, Claude, and Gemini actually work - and how to get the most out of them.</p>
+
+  <div class="callout tip">
+    <span class="label">Who this is for</span>
+    You've used (or heard about) AI chatbots and want to understand what's going on under the hood. You don't need any programming or maths background - every concept is explained from scratch.
+  </div>
+
+  <h2>Your progress</h2>
+  <p>This guide is a bit of a game: each page has mini-challenges and a "boss level" quiz. Earn points, level up, and collect all six badges - the last one waits at the Final Challenge 🏁.</p>
+  <div id="progress-dash"></div>
+
+  <h2>What you'll learn</h2>
+  <p>This guide is a short journey - five parts and a final challenge. Each page builds on the last, so if you're brand new, read them in order. If you already know a bit, jump straight to what interests you.</p>
+
+  <div class="topic-grid">
+    <a href="tokens.html">
+      <span class="num">Part 1</span>
+      <h3>🧩 Tokens: How AI Reads</h3>
+      <p>AI doesn't see words the way you do. Learn what tokens are, and try chopping your own sentence into them.</p>
+    </a>
+    <a href="training.html">
+      <span class="num">Part 2</span>
+      <h3>🎓 Training: How AI Learns</h3>
+      <p>How a model goes from knowing nothing to writing essays - prediction, patterns, and mountains of text.</p>
+    </a>
+    <a href="using-ai.html">
+      <span class="num">Part 3</span>
+      <h3>💬 Using AI Well</h3>
+      <p>Prompts, context windows, temperature, and hallucinations - the practical skills of working with AI.</p>
+    </a>
+    <a href="agents.html">
+      <span class="num">Part 4</span>
+      <h3>🦾 Agents: AI That Does Things</h3>
+      <p>From answering questions to taking actions - how AI agents use tools, plan, and work in loops.</p>
+    </a>
+    <a href="safety.html">
+      <span class="num">Part 5</span>
+      <h3>🛡️ Safe &amp; Honest Use</h3>
+      <p>What never to paste into a chatbot, and how to use AI while studying without cheating yourself.</p>
+    </a>
+    <a href="final-challenge.html">
+      <span class="num">Final</span>
+      <h3>The Final Challenge 🏁</h3>
+      <p>Put it all together: one real task, done properly with AI. Beat it to earn the final badge.</p>
+    </a>
+  </div>
+
+  <h2>The 60-second version</h2>
+  <p>If you only read one paragraph on this whole site, make it this one:</p>
+  <div class="card">
+    <p>A <strong>large language model (LLM)</strong> is a computer program that has read an enormous amount of text and learnt the patterns in it. Its one core skill is deceptively simple: <em>given some text, predict what comes next</em>. Everything impressive it does - answering questions, writing code, summarising documents - emerges from doing that one prediction, over and over, one small chunk (a "token") at a time. It doesn't look things up in a database, and it doesn't "know" facts the way you do. It generates likely text. That's why it's brilliant, and it's also why it sometimes confidently makes things up.</p>
+  </div>
+
+  <h2>A few myths, busted up front</h2>
+  <table>
+    <tr><th>Myth</th><th>Reality</th></tr>
+    <tr>
+      <td>"AI searches the internet for answers."</td>
+      <td>By default, an LLM generates answers from patterns it learnt during training. Some tools <em>add</em> web search on top, but the model itself isn't searching anything.</td>
+    </tr>
+    <tr>
+      <td>"AI understands what it's saying."</td>
+      <td>Debatable - and hotly debated! What's certain is it works very differently from human understanding. It has no lived experience, no senses, and no memory between conversations (unless memory is added as a feature).</td>
+    </tr>
+    <tr>
+      <td>"If AI says it, it must be true."</td>
+      <td>LLMs can produce confident, fluent, completely wrong answers. This is called <strong>hallucination</strong>, and it's covered in <a href="using-ai.html">Part 3</a>.</td>
+    </tr>
+    <tr>
+      <td>"AI is one thing."</td>
+      <td>"AI" is a huge umbrella. This guide covers <em>language models</em> - the tech behind chatbots. Image generators, self-driving cars, and recommendation systems are different (though related) technologies.</td>
+    </tr>
+  </table>
+
+  <div class="pager">
+    <span></span>
+    <a href="tokens.html"><span class="dir">Next →</span> Part 1: Tokens - How AI Reads</a>
+  </div>
+</main>
+
+<footer>Made as a learning resource · Hosted on GitHub Pages</footer>
+<script src="quiz.js"></script>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agents: AI That Does Things - AI Explained</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a class="brand" href="index.html">🤖 AI Explained</a>
+    <a class="navlink" href="index.html">Home</a>
+    <a class="navlink" href="tokens.html">Tokens</a>
+    <a class="navlink" href="training.html">Training</a>
+    <a class="navlink" href="using-ai.html">Using AI</a>
+    <a class="navlink active" href="agents.html">Agents</a>
+    <a class="navlink" href="models.html">Models</a>
+    <a class="navlink" href="australians.html">Australians</a>
+    <a class="navlink" href="safety.html">Safe Use</a>
+    <a class="navlink" href="final-challenge.html">Challenge</a>
+    <a class="navlink" href="glossary.html">Glossary</a>
+  </div>
+</nav>
+
+<main>
+  <h1>Part 4 - Agents: AI That Does Things</h1>
+  <p class="lead">Everything so far describes an AI that <em>talks</em>. The frontier of AI right now is systems that <em>act</em> - booking things, researching across many sources, writing and running code. These are called <strong>agents</strong>.</p>
+
+  <h2>From answering to acting</h2>
+  <p>A plain chatbot has exactly one ability: read text in, write text out. It can't check today's weather, open a file, or send an email. Every fact it offers comes from frozen training data.</p>
+  <p>The breakthrough idea is <strong>tool use</strong>. Developers give the model a menu of tools it's allowed to request - "search the web", "read this file", "run this calculation", "send this message" - and the model, instead of only writing prose, can write a special structured request like: <code>use tool: search, query: "weather Sydney today"</code>. The surrounding software actually runs the search, feeds the result back into the model's context window, and the model continues from there.</p>
+
+  <div class="analogy">
+    A plain LLM is like a brilliant advisor locked in a room with no phone and no internet - they can only tell you what they already know. An agent is the same advisor given a phone, a laptop, and permission to make calls on your behalf. Same brain; vastly more useful - and requiring rather more trust.
+  </div>
+
+  <h2>The agent loop</h2>
+  <p>An agent works in a repeating cycle: <strong>think → act → observe → repeat</strong>, until the job is done. The model looks at the goal and everything it has learnt so far, decides on a next step, uses a tool, sees the result, and reconsiders. Step through a realistic example:</p>
+
+  <div class="demo">
+    <div class="demo-title">🔬 Interactive: step through an agent's loop</div>
+    <p style="margin-top:0">Task given to the agent: <em>"Find the cheapest flight from Sydney to Melbourne next Friday and summarise the top 3 options."</em></p>
+    <div class="loop-steps" id="loop-steps"></div>
+    <button id="loop-next">Start ▶</button>
+    <button id="loop-reset" style="background:var(--surface-2);color:var(--text);margin-left:8px">Reset</button>
+  </div>
+
+  <h2>What makes agents different from chatbots</h2>
+  <table>
+    <tr><th></th><th>Chatbot</th><th>Agent</th></tr>
+    <tr><td><strong>Turns</strong></td><td>One reply per message</td><td>Many steps per task, often without you watching</td></tr>
+    <tr><td><strong>Abilities</strong></td><td>Text in, text out</td><td>Can use tools: search, files, code, apps, email</td></tr>
+    <tr><td><strong>Knowledge</strong></td><td>Frozen at training time</td><td>Can fetch live, current information</td></tr>
+    <tr><td><strong>Failure mode</strong></td><td>Wrong answer</td><td>Wrong <em>action</em> - which is why permissions matter</td></tr>
+  </table>
+
+  <h2>Ways of connecting AI to the world</h2>
+  <p>A few terms you'll hear around agents, decoded:</p>
+  <p><strong>Tool use / function calling.</strong> The core mechanism above: the model requests an action, external software executes it, the result comes back as text.</p>
+  <p><strong>RAG (retrieval-augmented generation).</strong> Before the model answers, relevant documents (your company wiki, a manual, your notes) are automatically found and pasted into its context window. It grounds answers in real sources instead of memory alone - hugely reduces hallucination for factual work.</p>
+  <p><strong>MCP (Model Context Protocol).</strong> A standard "plug socket" that lets any AI app connect to any tool or data source that speaks the same standard - rather than every company inventing its own connectors.</p>
+  <p><strong>Multi-agent systems.</strong> Several agents working together - one plans, one researches, one writes, one checks. Early days, but it's where a lot of current development is heading.</p>
+
+  <h2>The trust question</h2>
+  <p>Agents inherit every limitation from the earlier chapters - hallucination, sensitivity to phrasing - but now with the ability to <em>act</em>. A chatbot that hallucinates gives you a wrong sentence; an agent that hallucinates might email the wrong person. That's why well-designed agent products do things like ask for confirmation before consequential actions (sending, buying, deleting), run risky operations in a sandbox - a safe, isolated environment - and keep a visible log of every step so you can audit what happened.</p>
+
+  <div class="callout warn">
+    <span class="label">Practical advice</span>
+    Start agents on low-stakes tasks (research, drafting, organising files) and review their work, the same way you'd onboard a new assistant. Expand their responsibilities as they earn trust.
+  </div>
+
+  <div class="callout tip">
+    <span class="label">Key takeaway</span>
+    An agent is an LLM in a loop with tools: it thinks, acts, observes the result, and repeats until the task is done. Same prediction engine as a chatbot - plus hands.
+  </div>
+
+  <div class="quiz" data-quiz="agents"></div>
+
+  <h2>Where to go from here</h2>
+  <p>You now have the full picture: text becomes <a href="tokens.html">tokens</a>, models learn by <a href="training.html">predicting them</a>, you steer them with <a href="using-ai.html">good prompts</a>, and agents put the whole thing in a loop with tools. The best next step is practice - take a real task from your week and work through it with an AI assistant, applying what you've learnt. The <a href="glossary.html">glossary</a> is there whenever a term trips you up.</p>
+
+  <div class="pager">
+    <a href="using-ai.html"><span class="dir">← Previous</span> Part 3: Using AI Well</a>
+    <a href="models.html"><span class="dir">Next →</span> Models &amp; Makers</a>
+  </div>
+</main>
+
+<footer>Made as a learning resource · Hosted on GitHub Pages</footer>
+
+<script>
+(function () {
+  const STEPS = [
+    ["THINK", "\"I need flight prices for Sydney → Melbourne next Friday. First I should work out the exact date, then search.\""],
+    ["ACT", "Uses tool: <code>get_date</code> → asks the calendar tool what date 'next Friday' is."],
+    ["OBSERVE", "Tool returns: <code>Friday = 17 July 2026</code>. This lands in the context window."],
+    ["THINK", "\"Now I can search for flights on that date.\""],
+    ["ACT", "Uses tool: <code>web_search</code> → \"Sydney to Melbourne flights 17 July 2026 cheapest\"."],
+    ["OBSERVE", "Search results arrive: several airlines, times and prices, as text."],
+    ["THINK", "\"I have enough options. I'll compare prices, pick the three cheapest, and write the summary.\""],
+    ["DONE", "Replies to you: a tidy summary of the top 3 options with prices, times and booking links. Loop ends."]
+  ];
+  const wrap = document.getElementById("loop-steps");
+  const btn = document.getElementById("loop-next");
+  const reset = document.getElementById("loop-reset");
+  let idx = -1;
+
+  STEPS.forEach(([label, text]) => {
+    const div = document.createElement("div");
+    div.className = "loop-step";
+    div.innerHTML = '<span class="step-label">' + label + '</span><br>' + text;
+    wrap.appendChild(div);
+  });
+  const nodes = wrap.children;
+
+  btn.addEventListener("click", () => {
+    if (idx < STEPS.length - 1) {
+      idx++;
+      for (let i = 0; i < nodes.length; i++) nodes[i].classList.toggle("active", i === idx);
+      btn.textContent = idx === STEPS.length - 1 ? "Finished ✓" : "Next step ▶";
+      nodes[idx].scrollIntoView({ block: "nearest", behavior: "smooth" });
+      if (idx === STEPS.length - 1 && window.AIEX && AIEX.award("agents-loop-complete", 10)) {
+        AIEX.floatPoints(btn, 10);
+      }
+    }
+  });
+  reset.addEventListener("click", () => {
+    idx = -1;
+    for (let i = 0; i < nodes.length; i++) nodes[i].classList.remove("active");
+    btn.textContent = "Start ▶";
+  });
+})();
+</script>
+<script src="quiz.js"></script>
+</body>
+</html>

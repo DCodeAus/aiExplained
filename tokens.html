@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tokens: How AI Reads - AI Explained</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a class="brand" href="index.html">🤖 AI Explained</a>
+    <a class="navlink" href="index.html">Home</a>
+    <a class="navlink active" href="tokens.html">Tokens</a>
+    <a class="navlink" href="training.html">Training</a>
+    <a class="navlink" href="using-ai.html">Using AI</a>
+    <a class="navlink" href="agents.html">Agents</a>
+    <a class="navlink" href="models.html">Models</a>
+    <a class="navlink" href="australians.html">Australians</a>
+    <a class="navlink" href="safety.html">Safe Use</a>
+    <a class="navlink" href="final-challenge.html">Challenge</a>
+    <a class="navlink" href="glossary.html">Glossary</a>
+  </div>
+</nav>
+
+<main>
+  <h1>Part 1 - Tokens: How AI Reads</h1>
+  <p class="lead">Before an AI can do anything with your words, it has to convert them into something a computer can process. That conversion is called <strong>tokenisation</strong>, and it shapes everything about how AI works.</p>
+
+  <h2>Computers don't read words</h2>
+  <p>A computer, at its heart, only works with numbers. So the very first step in any language model is turning your text into numbers. But how do you chop up a sentence?</p>
+  <p>You might guess "one number per word", but that has problems. English alone has hundreds of thousands of words, plus names, typos, slang, and new words invented daily. You'd need an impossibly large dictionary, and any word not in it would break the system.</p>
+  <p>You could go the other way - one number per letter. That works, but it makes every sentence extremely long, and it throws away useful structure ("ing" and "tion" are meaningful chunks).</p>
+  <p>The compromise is <strong>tokens</strong>: chunks that are usually parts of words, whole short words, or common word pieces. Common words like "the" get their own token. Rarer words get split: "tokenisation" might become <span class="token">token</span><span class="token">isation</span> or <span class="token">token</span><span class="token">is</span><span class="token">ation</span>.</p>
+
+  <div class="analogy">
+    Imagine LEGO. You could build a house out of individual studs (letters - too fiddly) or buy a pre-made house (whole words - too inflexible, you'd need a warehouse of every possible house). Instead, LEGO gives you a manageable set of bricks in common shapes that combine to build anything. Tokens are the LEGO bricks of language.
+  </div>
+
+  <h2>Try it yourself</h2>
+  <div class="demo">
+    <div class="demo-title">🔬 Interactive: rough tokeniser</div>
+    <p style="margin-top:0"><strong>Important:</strong> this demo is a hand-made imitation to show the <em>idea</em> - real tokenisers don't split on prefixes and suffixes like this one does. They learn their splits statistically from data (an algorithm called byte-pair encoding), so the real boundaries often look arbitrary. Once you've played here, try the real thing at <a href="https://platform.openai.com/tokenizer" target="_blank" rel="noopener">OpenAI's tokeniser playground</a> and compare.</p>
+    <input type="text" id="tok-input" value="The quick brown fox is unbelievably extraordinary!" aria-label="Sentence to tokenise">
+    <button id="tok-btn">Tokenise</button>
+    <div class="out" id="tok-out"></div>
+    <p id="tok-count" style="color:var(--muted);font-size:0.9rem"></p>
+  </div>
+
+  <div class="demo">
+    <div class="demo-title">🎮 Challenge: beat the tokeniser</div>
+    <p style="margin-top:0">Before tokenising, guess how many tokens this sentence will become. Within ±2 wins points!</p>
+    <p class="mono" id="guess-sentence" style="display:block;padding:10px 12px"></p>
+    <div class="guess-row">
+      <label for="guess-input">Your guess:</label>
+      <input type="number" id="guess-input" min="1" max="99">
+      <button id="guess-btn" style="margin-top:0">Reveal 🎲</button>
+      <button id="guess-new" style="margin-top:0;background:var(--surface-2);color:var(--text)">New sentence</button>
+    </div>
+    <output id="guess-result"></output>
+  </div>
+
+  <p>Notice a few things when you experiment:</p>
+  <p>Short, common words tend to survive as single tokens. Long or unusual words get split into pieces. Punctuation often becomes its own token. And spaces usually get attached to the start of the following token - that's why you'll sometimes see tokens like "<code>&nbsp;fox</code>" with a leading space.</p>
+
+  <h2>Every token becomes a number</h2>
+  <p>Each token in the model's vocabulary has an ID number. "The" might be token 464, " fox" might be token 21831. Your sentence becomes a list of numbers, and <em>that</em> is what the model actually processes. When the model responds, it produces numbers too, which get converted back into text for you to read.</p>
+
+  <svg class="diagram" viewBox="0 0 800 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram showing text converted to tokens then to numbers then processed by the model">
+    <style>
+      .box { fill: var(--surface); stroke: var(--border); rx: 10; }
+      .lbl { fill: var(--text); font-size: 15px; font-family: sans-serif; }
+      .sub { fill: var(--muted); font-size: 12px; font-family: sans-serif; }
+      .arr { stroke: var(--accent); stroke-width: 2; marker-end: url(#ah); }
+    </style>
+    <defs>
+      <marker id="ah" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+        <path d="M0,0 L8,4 L0,8 z" fill="var(--accent)"/>
+      </marker>
+    </defs>
+    <rect class="box" x="10" y="45" width="150" height="60" rx="10"/>
+    <text class="lbl" x="85" y="70" text-anchor="middle">"The fox ran"</text>
+    <text class="sub" x="85" y="92" text-anchor="middle">your text</text>
+    <line class="arr" x1="165" y1="75" x2="205" y2="75"/>
+    <rect class="box" x="210" y="45" width="170" height="60" rx="10"/>
+    <text class="lbl" x="295" y="70" text-anchor="middle">The | fox | ran</text>
+    <text class="sub" x="295" y="92" text-anchor="middle">tokens</text>
+    <line class="arr" x1="385" y1="75" x2="425" y2="75"/>
+    <rect class="box" x="430" y="45" width="160" height="60" rx="10"/>
+    <text class="lbl" x="510" y="70" text-anchor="middle">464, 21831, 4966</text>
+    <text class="sub" x="510" y="92" text-anchor="middle">token IDs</text>
+    <line class="arr" x1="595" y1="75" x2="635" y2="75"/>
+    <rect class="box" x="640" y="45" width="150" height="60" rx="10"/>
+    <text class="lbl" x="715" y="70" text-anchor="middle">🧠 Model</text>
+    <text class="sub" x="715" y="92" text-anchor="middle">processes numbers</text>
+  </svg>
+
+  <h2>Why should you care about tokens?</h2>
+  <p>Tokens explain several everyday quirks of AI tools:</p>
+  <p><strong>Pricing and limits.</strong> AI services measure usage in tokens, not words. A rough rule of thumb for English: 1 token ≈ ¾ of a word, so 1,000 tokens is roughly 750 words.</p>
+  <p><strong>The context window.</strong> Every model has a maximum number of tokens it can consider at once - its "working memory". More on this in <a href="using-ai.html">Part 3</a>.</p>
+  <p><strong>Odd weaknesses.</strong> Ever seen an AI struggle to count the letters in "strawberry"? That's tokens. The model may see <span class="token">straw</span><span class="token">berry</span> as two chunks - it doesn't naturally see individual letters at all.</p>
+
+  <div class="callout tip">
+    <span class="label">Key takeaway</span>
+    AI doesn't read words or letters - it reads tokens, which are numeric chunks of text. Many of AI's strengths and blind spots trace straight back to this.
+  </div>
+
+  <div class="quiz" data-quiz="tokens"></div>
+
+  <div class="pager">
+    <a href="index.html"><span class="dir">← Previous</span> Home</a>
+    <a href="training.html"><span class="dir">Next →</span> Part 2: Training - How AI Learns</a>
+  </div>
+</main>
+
+<footer>Made as a learning resource · Hosted on GitHub Pages</footer>
+
+<script>
+(function () {
+  const COMMON = new Set(["the","a","an","is","are","was","were","in","on","at","to","of","and","or","but","it","he","she","we","you","i","they","for","with","as","be","this","that","not","have","has","had","do","does","did","will","can","my","your","his","her","its","our","their","from","by","so","if","no","yes","up","down","out","all","one","two","fox","cat","dog","run","ran","see","saw","go","went","big","new","old","day","man","who","what","when","how","why","where"]);
+  const SUFFIXES = ["ation","ously","ingly","ional","ment","ness","able","ible","ling","tion","sion","ing","ely","est","ers","ed","ly","er","es","s","y"];
+  const PREFIXES = ["extra","under","inter","over","anti","dis","pre","post","un","re","im","in","ex","de"];
+
+  function splitWord(w) {
+    if (w.length <= 4 || COMMON.has(w.toLowerCase())) return [w];
+    let parts = [];
+    let rest = w;
+    for (const p of PREFIXES) {
+      if (rest.toLowerCase().startsWith(p) && rest.length - p.length >= 3) {
+        parts.push(rest.slice(0, p.length));
+        rest = rest.slice(p.length);
+        break;
+      }
+    }
+    let tail = [];
+    let changed = true;
+    while (changed && rest.length > 5) {
+      changed = false;
+      for (const s of SUFFIXES) {
+        if (rest.toLowerCase().endsWith(s) && rest.length - s.length >= 3) {
+          tail.unshift(rest.slice(rest.length - s.length));
+          rest = rest.slice(0, rest.length - s.length);
+          changed = true;
+          break;
+        }
+      }
+    }
+    // chop remaining long stems into ~4-char chunks
+    while (rest.length > 7) {
+      parts.push(rest.slice(0, 4));
+      rest = rest.slice(4);
+    }
+    if (rest) parts.push(rest);
+    return parts.concat(tail);
+  }
+
+  function tokenise(text) {
+    const tokens = [];
+    const re = /(\s+)|([A-Za-z']+)|([0-9]+)|([^\sA-Za-z0-9]+)/g;
+    let m, pendingSpace = "";
+    while ((m = re.exec(text)) !== null) {
+      if (m[1]) { pendingSpace = " "; continue; }
+      const chunk = m[2] || m[3] || m[4];
+      if (m[2]) {
+        const parts = splitWord(chunk);
+        parts.forEach((p, i) => {
+          tokens.push((i === 0 ? pendingSpace : "") + p);
+        });
+      } else {
+        tokens.push(pendingSpace + chunk);
+      }
+      pendingSpace = "";
+    }
+    return tokens;
+  }
+
+  const input = document.getElementById("tok-input");
+  const out = document.getElementById("tok-out");
+  const count = document.getElementById("tok-count");
+
+  function run() {
+    const toks = tokenise(input.value);
+    out.innerHTML = "";
+    toks.forEach(t => {
+      const span = document.createElement("span");
+      span.className = "token";
+      span.textContent = t.replace(/ /g, " ");
+      out.appendChild(span);
+    });
+    const words = input.value.trim().split(/\s+/).filter(Boolean).length;
+    count.textContent = toks.length + " tokens from " + words + " words.";
+  }
+
+  document.getElementById("tok-btn").addEventListener("click", run);
+  input.addEventListener("keydown", e => { if (e.key === "Enter") run(); });
+  run();
+
+  /* --- Challenge: beat the tokeniser --- */
+  const SENTENCES = [
+    "The cat sat on the mat.",
+    "Extraordinarily sophisticated terminology bamboozles everyone.",
+    "I love programming in C# at Swinburne!",
+    "Antidisestablishmentarianism is a remarkably long word.",
+    "Sydney is sunny today, mate.",
+    "Unbelievably, the hippopotamus performed spectacularly."
+  ];
+  let currentSentence = 0, guessed = false;
+  const gSentence = document.getElementById("guess-sentence");
+  const gInput = document.getElementById("guess-input");
+  const gResult = document.getElementById("guess-result");
+
+  function newSentence() {
+    currentSentence = Math.floor(Math.random() * SENTENCES.length);
+    gSentence.textContent = SENTENCES[currentSentence];
+    gResult.textContent = "";
+    gInput.value = "";
+    guessed = false;
+  }
+
+  document.getElementById("guess-new").addEventListener("click", newSentence);
+  document.getElementById("guess-btn").addEventListener("click", () => {
+    if (guessed) return;
+    const guess = parseInt(gInput.value, 10);
+    if (isNaN(guess)) { gResult.textContent = "Type a number first!"; return; }
+    guessed = true;
+    const actual = tokenise(SENTENCES[currentSentence]).length;
+    const diff = Math.abs(actual - guess);
+    if (diff === 0) {
+      gResult.innerHTML = "🎯 Spot on! It's exactly <strong>" + actual + " tokens</strong>. Incredible!";
+      if (window.AIEX && AIEX.award("tokens-guess-exact", 15)) AIEX.floatPoints(gResult, 15);
+    } else if (diff <= 2) {
+      gResult.innerHTML = "🎉 Close enough! It's <strong>" + actual + " tokens</strong> - you were within " + diff + ". Points earned!";
+      if (window.AIEX && AIEX.award("tokens-guess-close", 10)) AIEX.floatPoints(gResult, 10);
+    } else {
+      gResult.innerHTML = "It's <strong>" + actual + " tokens</strong> - you were off by " + diff + ". Try another sentence! (Tip: long words split into pieces, and punctuation counts.)";
+    }
+    input.value = SENTENCES[currentSentence];
+    run();
+  });
+  newSentence();
+})();
+</script>
+<script src="quiz.js"></script>
+</body>
+</html>

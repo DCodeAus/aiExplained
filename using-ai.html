@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Using AI Well - AI Explained</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a class="brand" href="index.html">🤖 AI Explained</a>
+    <a class="navlink" href="index.html">Home</a>
+    <a class="navlink" href="tokens.html">Tokens</a>
+    <a class="navlink" href="training.html">Training</a>
+    <a class="navlink active" href="using-ai.html">Using AI</a>
+    <a class="navlink" href="agents.html">Agents</a>
+    <a class="navlink" href="models.html">Models</a>
+    <a class="navlink" href="australians.html">Australians</a>
+    <a class="navlink" href="safety.html">Safe Use</a>
+    <a class="navlink" href="final-challenge.html">Challenge</a>
+    <a class="navlink" href="glossary.html">Glossary</a>
+  </div>
+</nav>
+
+<main>
+  <h1>Part 3 - Using AI Well</h1>
+  <p class="lead">You now know what's under the bonnet. This page covers the practical side: how to talk to an AI, what its limits are, and the handful of settings and concepts that make you dramatically more effective with it.</p>
+
+  <h2>Prompts: you get out what you put in</h2>
+  <p>Everything you type to an AI is called a <strong>prompt</strong>. Because the model is a next-token predictor, your prompt is quite literally the text it's continuing from - so the quality and clarity of your prompt shapes the answer more than most people realise.</p>
+  <p>Compare these two requests:</p>
+  <div class="card">
+    <p style="margin-top:0">❌ <em>"Write about dogs."</em></p>
+    <p style="margin-bottom:0">✅ <em>"Write a friendly 150-word introduction to choosing a first dog, aimed at apartment renters in Australia. Mention two suitable breeds and one common mistake."</em></p>
+  </div>
+  <p>The second prompt pins down the <strong>audience</strong>, <strong>length</strong>, <strong>tone</strong>, and <strong>content</strong>. Vague in, vague out. A few habits that consistently improve results:</p>
+  <p><strong>Give context.</strong> Who are you, what's this for, what have you already tried? <strong>Show examples.</strong> "Here's one I like - write in this style." <strong>Ask for a format.</strong> A table, a list, a step-by-step plan. <strong>Iterate.</strong> The first answer is a draft, not a verdict - reply with "shorter", "more formal", "explain point 2 more" and it improves. <strong>Ask it to reason step by step</strong> for tricky problems - working through steps before answering measurably improves accuracy.</p>
+
+  <h2>The context window: AI's working memory</h2>
+  <p>A model can only "see" a limited amount of text at once - its <strong>context window</strong>, measured in tokens (from <a href="tokens.html">Part 1</a>). Everything in the current conversation - your messages, its replies, any documents you've pasted - must fit in this window.</p>
+
+  <div class="analogy">
+    A context window is like a whiteboard. Everything relevant to your conversation gets written on it. It's big - modern models can hold hundreds of pages - but it's finite. When it fills up, the oldest writing gets wiped to make room. And when you start a new conversation, the whiteboard is erased completely.
+  </div>
+
+  <p>This explains two everyday experiences: very long conversations can make the model "forget" things said early on, and a new chat knows nothing about your previous chats (unless the product adds a memory feature on top, which some now do).</p>
+
+  <h2>Temperature: the creativity dial</h2>
+  <p>Remember from <a href="training.html">Part 2</a> that the model produces <em>probabilities</em> for the next token, not one fixed answer. <strong>Temperature</strong> controls how it picks from those probabilities. Low temperature: nearly always pick the most likely token - predictable, consistent, sometimes bland. High temperature: give less-likely tokens a real chance - varied, creative, sometimes unhinged.</p>
+
+  <div class="demo">
+    <div class="demo-title">🔬 Interactive: the temperature dial</div>
+    <p style="margin-top:0">The sentence is <em>"The weather today is …"</em>. Drag the slider and watch how the odds of each next word shift, then press "Generate" a few times at different temperatures.</p>
+    <label for="temp-slider">Temperature: <strong id="temp-val">0.7</strong></label>
+    <input type="range" id="temp-slider" min="0.05" max="2" step="0.05" value="0.7">
+    <div class="out" id="temp-out"></div>
+    <button id="temp-gen">Generate ✨</button>
+    <output id="temp-result" style="font-size:1.05rem"></output>
+    <p style="color:var(--muted);font-size:0.9rem;margin-bottom:0">At very low temperature you'll get "sunny" almost every time. At high temperature, anything can happen. Chat products usually run somewhere in the middle - which is why asking the same question twice gives different answers.</p>
+  </div>
+
+  <div class="demo">
+    <div class="demo-title">🎮 Game: hot or cold?</div>
+    <p style="margin-top:0">I've secretly set the temperature to either <strong>very low (0.1)</strong> or <strong>very high (1.9)</strong> and generated four endings for <em>"The weather today is …"</em>. Can you tell which setting it was? Guess right <strong>3 times in a row</strong> to win points.</p>
+    <button id="hc-deal" style="margin-top:0">Deal a round 🎲</button>
+    <output id="hc-samples" style="font-family:ui-monospace,Menlo,monospace"></output>
+    <div class="word-btns" id="hc-btns" style="display:none">
+      <button type="button" class="word-btn" data-guess="low">❄️ Low temperature</button>
+      <button type="button" class="word-btn" data-guess="high">🔥 High temperature</button>
+    </div>
+    <output id="hc-verdict"></output>
+  </div>
+
+  <h2>Hallucinations: confident nonsense</h2>
+  <p>As covered in <a href="training.html">Part 2</a>, models generate <em>plausible</em> text, not guaranteed-true text. A <strong>hallucination</strong> is when the output is fluent, confident, and wrong - an invented citation, a fake court case, a plausible-sounding statistic.</p>
+  <p>Practical defences:</p>
+  <p><strong>Treat specifics with suspicion.</strong> Names, dates, numbers, quotes, citations and URLs are the highest-risk outputs - verify anything that matters. <strong>Prefer tools with search or citations</strong> for factual questions, and click through to the sources. <strong>Ask the model to say when it's unsure</strong> - imperfect, but it helps. <strong>Never rely on an unverified answer</strong> for medical, legal, or financial decisions.</p>
+
+  <div class="callout warn">
+    <span class="label">Rule of thumb</span>
+    Use AI like a brilliant, fast, occasionally overconfident colleague: superb for drafts, ideas, explanations and summaries - but you sign off on the final answer, so you check the facts.
+  </div>
+
+  <h2>What AI is great at (and not)</h2>
+  <table>
+    <tr><th>Plays to its strengths</th><th>Fights its weaknesses</th></tr>
+    <tr><td>Drafting and rewriting text, changing tone</td><td>Precise arithmetic on its own (without tools)</td></tr>
+    <tr><td>Summarising and explaining documents you provide</td><td>Facts about very recent events (without search)</td></tr>
+    <tr><td>Brainstorming, naming, outlining</td><td>Obscure niche facts - high hallucination risk</td></tr>
+    <tr><td>Explaining concepts at any level ("explain like I'm 10")</td><td>Knowing what happened in your previous chats</td></tr>
+    <tr><td>Writing and explaining code</td><td>Guaranteed correctness of anything, unreviewed</td></tr>
+  </table>
+
+  <div class="callout tip">
+    <span class="label">Key takeaway</span>
+    Clear, specific prompts; awareness of the context window; healthy scepticism about facts. Master those three and you're ahead of most AI users.
+  </div>
+
+  <div class="quiz" data-quiz="using-ai"></div>
+
+  <div class="pager">
+    <a href="training.html"><span class="dir">← Previous</span> Part 2: Training</a>
+    <a href="agents.html"><span class="dir">Next →</span> Part 4: Agents</a>
+  </div>
+</main>
+
+<footer>Made as a learning resource · Hosted on GitHub Pages</footer>
+
+<script>
+(function () {
+  // Base "logits" for the demo (higher = more likely)
+  const WORDS = [["sunny", 3.0], ["cloudy", 2.6], ["cold", 2.4], ["beautiful", 2.1], ["rainy", 2.0], ["apocalyptic", 0.4], ["purple", 0.1]];
+  const slider = document.getElementById("temp-slider");
+  const tempVal = document.getElementById("temp-val");
+  const out = document.getElementById("temp-out");
+  const result = document.getElementById("temp-result");
+
+  function probs(T) {
+    const exps = WORDS.map(([, l]) => Math.exp(l / T));
+    const sum = exps.reduce((a, b) => a + b, 0);
+    return exps.map(e => e / sum);
+  }
+
+  function render() {
+    const T = parseFloat(slider.value);
+    tempVal.textContent = T.toFixed(2);
+    const p = probs(T);
+    out.innerHTML = "";
+    WORDS.forEach(([w], i) => {
+      const pct = (p[i] * 100);
+      const row = document.createElement("div");
+      row.className = "prob-row";
+      row.innerHTML = '<span class="word">' + w + '</span>' +
+        '<div class="bar-track"><div class="bar" style="width:' + pct + '%"></div></div>' +
+        '<span class="pct">' + pct.toFixed(1) + '%</span>';
+      out.appendChild(row);
+    });
+  }
+
+  function generate() {
+    const p = probs(parseFloat(slider.value));
+    let r = Math.random(), pick = 0;
+    for (let i = 0; i < p.length; i++) { r -= p[i]; if (r <= 0) { pick = i; break; } }
+    result.textContent = '→ "The weather today is ' + WORDS[pick][0] + '."';
+  }
+
+  slider.addEventListener("input", render);
+  document.getElementById("temp-gen").addEventListener("click", generate);
+  render();
+
+  /* --- Game: hot or cold? --- */
+  const hcSamples = document.getElementById("hc-samples");
+  const hcBtns = document.getElementById("hc-btns");
+  const hcVerdict = document.getElementById("hc-verdict");
+  let secret = null, hcDone = false, streak = 0;
+
+  function sample(T) {
+    const p = probs(T);
+    let r = Math.random();
+    for (let i = 0; i < p.length; i++) { r -= p[i]; if (r <= 0) return WORDS[i][0]; }
+    return WORDS[0][0];
+  }
+
+  document.getElementById("hc-deal").addEventListener("click", () => {
+    secret = Math.random() < 0.5 ? "low" : "high";
+    const T = secret === "low" ? 0.1 : 1.9;
+    const words = [sample(T), sample(T), sample(T), sample(T)];
+    hcSamples.textContent = words.map(w => '"…is ' + w + '."').join("  ");
+    hcBtns.style.display = "flex";
+    hcBtns.querySelectorAll(".word-btn").forEach(b => { b.disabled = false; b.classList.remove("right", "wrong"); });
+    hcVerdict.textContent = "";
+    hcDone = false;
+  });
+
+  hcBtns.querySelectorAll(".word-btn").forEach(b => {
+    b.addEventListener("click", () => {
+      if (hcDone || !secret) return;
+      hcDone = true;
+      const isRight = b.dataset.guess === secret;
+      b.classList.add(isRight ? "right" : "wrong");
+      if (isRight) {
+        streak++;
+        hcVerdict.innerHTML = "✅ Correct - that was <strong>" + (secret === "low" ? "low (0.1)" : "high (1.9)") + "</strong> temperature. Streak: " + streak + (streak >= 3 ? " 🔥" : "");
+        if (streak >= 3 && window.AIEX && AIEX.award("usingai-hotcold", 15)) { AIEX.floatPoints(b, 15); AIEX.confetti(); }
+      } else {
+        streak = 0;
+        hcVerdict.innerHTML = "❌ It was actually <strong>" + (secret === "low" ? "low (0.1)" : "high (1.9)") + "</strong>. Hint: low temperature repeats safe picks like 'sunny'; high temperature produces odd ones. Deal again!";
+      }
+    });
+  });
+})();
+</script>
+<script src="quiz.js"></script>
+</body>
+</html>
