@@ -29,7 +29,7 @@
 
   <div class="callout warn">
     <span class="label">Date stamp</span>
-    Plans, prices and setup steps below are accurate <strong>as of 11 July 2026</strong>. This industry moves fast - prices are in USD and change often, so treat this as a snapshot and check the official pages (linked in each section) before paying for anything.
+    Plans, prices and setup steps below are accurate <strong>as of 31 October 2026</strong>. This industry moves fast - prices are in USD and change often, so treat this as a snapshot and check the official pages (linked in each section) before paying for anything.
   </div>
 
   <h2>Where "AI" came from: a brief history</h2>
@@ -104,13 +104,13 @@
       <td><strong>What it is</strong></td>
       <td>AI woven into Word, Excel, Outlook, PowerPoint and Teams</td>
       <td>General-purpose AI assistant (chat, documents, analysis, coding)</td>
-      <td>An agentic <em>coding</em> tool that edits files and runs commands in your projects. Since <strong>9 July 2026</strong> it's no longer a separate app - it's a dedicated mode inside the ChatGPT desktop app, alongside Chat and the new "Work" mode</td>
+      <td>An agentic <em>coding</em> tool that edits files and runs commands in your projects. Since July 2026 it's no longer a separate app - it's a mode inside the ChatGPT desktop app, alongside Chat and Work, and also comes as a command-line tool and editor extension</td>
     </tr>
     <tr>
       <td><strong>Underlying models</strong></td>
       <td>OpenAI GPT models + Microsoft/Anthropic models (you don't choose)</td>
-      <td>Anthropic's Claude family (Haiku = fast/cheap, Sonnet = balanced, Opus/Fable = most capable)</td>
-      <td>OpenAI's GPT-5.5-era coding models</td>
+      <td>Anthropic's Claude family - currently Haiku 5.5 (fast/cheap), Sonnet 5.5 (balanced), Opus 5.5 (the everyday top model) and Fable 5.1 (most capable, for long-running agent work)</td>
+      <td>OpenAI's GPT-6 family - e.g. GPT-6.1 Sol and Terra on paid plans, the lighter GPT-6 Luna on Free and Go</td>
     </tr>
     <tr>
       <td><strong>Best for</strong></td>
@@ -128,76 +128,78 @@
       <td><strong>You'd pick it if…</strong></td>
       <td>Your work revolves around Outlook, Teams and Office documents</td>
       <td>You want the best general thinking/writing/coding partner</td>
-      <td>You're a developer (or learning to be one - hello, C# students) who wants AI working <em>inside</em> your codebase</td>
+      <td>You're a developer (or learning to be one) who wants AI working <em>inside</em> your codebase</td>
     </tr>
   </table>
 
-  <h2>Plans and limits - as of 11 July 2026</h2>
+  <h2>Plans and limits - as of 31 October 2026</h2>
 
   <h3><img class="logo" src="https://www.google.com/s2/favicons?domain=microsoft.com&sz=64" alt="Microsoft logo">Microsoft 365 Copilot</h3>
   <table>
     <tr><th>Plan</th><th>Price (USD)</th><th>What you get / constraints</th></tr>
     <tr><td>Copilot Chat (free)</td><td>$0</td><td>Web-grounded chat and limited in-app features. <strong>Does not connect to your own emails, files, calendar or Teams data</strong> - that's the paid product's whole advantage.</td></tr>
     <tr><td>Microsoft 365 Premium (individuals)</td><td>~$19.99/mo</td><td>Copilot inside Office apps for one person (replaced the old Copilot Pro plan).</td></tr>
-    <tr><td>Copilot Business (SMB)</td><td>~$18-21/user/mo</td><td>For businesses up to 300 users; requires an underlying Microsoft 365 licence.</td></tr>
+    <tr><td>Copilot Business (small business add-on)</td><td>$21/user/mo yearly ($18 on a promotion to 31 Dec 2026), or $25.20 monthly</td><td>For businesses up to 300 users; added on top of a Microsoft 365 business plan you already pay for.</td></tr>
+    <tr><td>Microsoft 365 Business Standard / Premium <em>with</em> Copilot</td><td>$23.50 / $32 per user/mo yearly</td><td>The Office apps and Copilot sold together as one bundle, so no separate base licence is needed.</td></tr>
     <tr><td>Microsoft 365 Copilot (enterprise)</td><td>~$30/user/mo</td><td>Full workplace-data integration via Microsoft Graph. Also requires a base Microsoft 365 subscription.</td></tr>
   </table>
-  <p><strong>Key limitations:</strong> it's never standalone - you must already pay for Microsoft 365. You can't choose which model answers you. Output quality depends on how tidy your organisation's data is (it can only ground answers in what it can find). And the free Copilot Chat sounds similar but skips the workplace-data integration that justifies the price.</p>
+  <p><strong>Key limitations:</strong> it's never standalone - you pay for Microsoft 365 as well, either separately or bundled. You can't choose which model answers you. Output quality depends on how tidy your organisation's data is (it can only ground answers in what it can find). And the free Copilot Chat sounds similar but skips the workplace-data integration that justifies the price.</p>
 
   <h3><img class="logo" src="https://www.google.com/s2/favicons?domain=claude.ai&sz=64" alt="Anthropic Claude logo">Claude (Anthropic)</h3>
   <table>
     <tr><th>Plan</th><th>Price (USD)</th><th>What you get / constraints</th></tr>
-    <tr><td>Free</td><td>$0</td><td>Access to a mid-tier model (Sonnet) with daily message limits that reset every few hours. No access to the top models.</td></tr>
-    <tr><td>Pro</td><td>$20/mo</td><td>~5× free usage, top models (Opus/Fable class), Projects, and Claude Code on a starter allowance. Limits work as a rolling ~5-hour budget, not a fixed message count.</td></tr>
-    <tr><td>Max</td><td>$100 or $200/mo</td><td>5× or 20× Pro usage - aimed at heavy Claude Code / agentic use. Weekly caps sit on top of session caps.</td></tr>
-    <tr><td>Team / Enterprise</td><td>from ~$25/seat/mo</td><td>Shared workspaces, admin controls, higher limits.</td></tr>
+    <tr><td>Free</td><td>$0</td><td>Sonnet and Haiku with limited usage every 5 hours and every week. No Opus or Fable, and no Claude Code.</td></tr>
+    <tr><td>Pro</td><td>$20/mo ($17/mo billed yearly)</td><td>Opus, Sonnet and Haiku, Projects, and Claude Code. Fable is available by paying for extra usage. Limits work as a 5-hour budget plus a weekly cap, not a fixed message count.</td></tr>
+    <tr><td>Max</td><td>$100/mo</td><td>5× Pro usage, and Fable included (up to half your weekly limit) - aimed at heavy Claude Code / agentic use.</td></tr>
+    <tr><td>Ultra</td><td>$200/mo</td><td>10× Pro weekly usage with no 5-hour limit (for verified accounts), plus Fable. Replaced the old 20× Max option.</td></tr>
+    <tr><td>Team</td><td>$25/seat/mo ($20 yearly); Premium seats $125 ($100 yearly)</td><td>2-150 people: shared workspaces, admin controls, more usage than Pro. Enterprise is priced on request.</td></tr>
   </table>
-  <p><strong>Key limitations:</strong> usage limits are the big one - heavy users hit the 5-hour budget, and complex requests (long documents, big code tasks) burn it faster. Limits are deliberately vague ("about 45 messages per 5 hours" on Pro, varying with length). No usage rollover between sessions.</p>
+  <p><strong>Key limitations:</strong> usage limits are the big one - heavy users hit the 5-hour budget, and complex requests (long documents, big code tasks) burn it faster. Anthropic doesn't publish exact numbers - how fast you use them depends on the model, how long the chat is and how big the files are. No usage rollover between sessions.</p>
 
   <h3><img class="logo" src="https://www.google.com/s2/favicons?domain=openai.com&sz=64" alt="OpenAI logo">OpenAI Codex</h3>
   <table>
     <tr><th>Plan</th><th>Price (USD)</th><th>What you get / constraints</th></tr>
-    <tr><td>ChatGPT Free / Go</td><td>$0 / $8/mo</td><td>Since the 9 July 2026 merger, Codex is available on every ChatGPT plan (including Free) via the desktop app - but with small allowances at the bottom tiers.</td></tr>
-    <tr><td>ChatGPT Plus</td><td>$20/mo</td><td>Meaningful Codex usage for a solo developer, sharing a 5-hour rolling limit across local and cloud tasks, plus weekly caps.</td></tr>
-    <tr><td>ChatGPT Pro</td><td>$100 or $200/mo</td><td>Multiplied limits for running many tasks or background agents; heavy professional use often lands in the $100-200/mo range in practice.</td></tr>
+    <tr><td>ChatGPT Free / Go</td><td>$0 / $8/mo</td><td>Quick, lightweight coding tasks in the desktop app, using the lighter GPT-6 Luna model. No cloud tasks or GitHub integration.</td></tr>
+    <tr><td>ChatGPT Plus</td><td>$20/mo</td><td>Codex everywhere - desktop and web, command line, editor extension and cloud tasks - with a 5-hour usage window (plus weekly caps) shared across all of them.</td></tr>
+    <tr><td>ChatGPT Pro</td><td>$100, $200 or $500/mo</td><td>Much higher limits, currently with no 5-hour window (weekly limits still apply); the $500 plan adds the faster "Ultrafast" mode.</td></tr>
+    <tr><td>ChatGPT Business</td><td>$25/user/mo ($20 yearly)</td><td>For teams of 2+, with the same per-person limits as Plus. Enterprise and Edu are priced on request.</td></tr>
     <tr><td>API (pay-as-you-go)</td><td>per token</td><td>No subscription - pay for exactly what you use; costs scale unpredictably with heavy agentic work.</td></tr>
   </table>
   <p><strong>Key limitations:</strong> it's a coding tool - its value assumes you have a codebase to point it at. Local and cloud usage share the same limit pool. And like all agents (<a href="agents.html">Part 4</a>), it can confidently make wrong <em>changes</em>, so code review remains your job.</p>
 
-  <h2>Getting set up - as of 11 July 2026</h2>
+  <h2>Getting set up - as of 31 October 2026</h2>
 
   <h3><img class="logo" src="https://www.google.com/s2/favicons?domain=microsoft.com&sz=64" alt="Microsoft logo">Microsoft 365 Copilot</h3>
   <div class="card">
     <p style="margin-top:0"><strong>As an individual:</strong> sign in at <a href="https://copilot.microsoft.com">copilot.microsoft.com</a> with any Microsoft account for the free Copilot Chat. For Copilot inside Word/Excel/Outlook, subscribe to Microsoft 365 Premium from your Microsoft account page - the Copilot button then appears in the ribbon of each Office app automatically.</p>
-    <p style="margin-bottom:0"><strong>At work/uni:</strong> you can't self-serve - an administrator buys Copilot licences in the Microsoft 365 admin centre and assigns one to your account. If the Copilot button is missing from your Office apps, that's the reason: ask your IT admin. (Swinburne students: check what your uni account includes before paying for anything.)</p>
+    <p style="margin-bottom:0"><strong>At work/uni:</strong> you can't self-serve - an administrator buys Copilot licences in the Microsoft 365 admin centre and assigns one to your account. If the Copilot button is missing from your Office apps, that's the reason: ask your IT admin. Students: check what your university account already includes before paying for anything.</p>
   </div>
 
   <h3><img class="logo" src="https://www.google.com/s2/favicons?domain=claude.ai&sz=64" alt="Anthropic Claude logo">Claude</h3>
   <div class="card">
     <p style="margin-top:0"><strong>Chat:</strong> go to <a href="https://claude.ai">claude.ai</a>, sign up with email or Google - free tier works immediately, upgrade to Pro in Settings if you hit limits. Mobile and desktop apps are on the usual app stores.</p>
-    <p style="margin-bottom:0"><strong>Claude Code (for developers):</strong> requires Node.js. In a terminal run <code>npm install -g @anthropic-ai/claude-code</code>, then <code>claude</code> inside a project folder, and sign in with your claude.ai account when prompted. Pro includes a starter allowance; Max is for daily heavy use.</p>
+    <p style="margin-bottom:0"><strong>Claude Code (for developers):</strong> needs a paid plan (Pro or above) - the free plan doesn't include it. Prefer not to use a terminal? It's built into the Claude desktop app. Otherwise install it with one command - on Mac or Linux run <code>curl -fsSL https://claude.ai/install.sh | bash</code>, on Windows (PowerShell) run <code>irm https://claude.ai/install.ps1 | iex</code> - then open a new terminal, run <code>claude</code> inside a project folder and sign in with your claude.ai account when prompted. Node.js is no longer needed. Pro is enough to learn with; Max or Ultra is for daily heavy use.</p>
   </div>
 
   <h3><img class="logo" src="https://www.google.com/s2/favicons?domain=openai.com&sz=64" alt="OpenAI logo">OpenAI Codex</h3>
   <div class="card">
-    <p style="margin-top:0"><strong>Heads up - this changed on 9 July 2026:</strong> the standalone Codex app merged into the new ChatGPT desktop app. If you find older guides describing a separate Codex app, they're already out of date.</p>
-    <p><strong>Easiest path:</strong> install the ChatGPT desktop app (Mac or Windows) from <a href="https://chatgpt.com">chatgpt.com</a> and sign in - Codex is a mode inside it, next to Chat and Work, on every plan including Free. Codex Cloud can also work on GitHub repositories you connect.</p>
+    <p style="margin-top:0"><strong>Heads up - this changed in July 2026:</strong> the standalone Codex app merged into the ChatGPT desktop app. If you find older guides describing a separate Codex app, they're out of date.</p>
+    <p><strong>Easiest path:</strong> install the ChatGPT desktop app (Mac or Windows) from <a href="https://chatgpt.com">chatgpt.com</a> and sign in - Codex is a mode inside it, next to Chat and Work, on every plan including Free. On paid plans, Codex Cloud can also work on GitHub repositories you connect.</p>
     <p style="margin-bottom:0"><strong>CLI (local, for terminal users):</strong> requires Node.js. Run <code>npm install -g @openai/codex</code>, then <code>codex</code> in a project folder and sign in with your ChatGPT account. IDE extensions for VS Code and similar editors work the same way - search "Codex" in the extensions marketplace.</p>
   </div>
 
   <div class="callout tip">
     <span class="label">Honest advice for a beginner</span>
-    Start free on all three before paying: free Claude, free ChatGPT/Codex, free Copilot Chat. Pay only when you hit limits doing real work. For your C# study specifically, Claude Pro or ChatGPT Plus (~$20/mo, roughly A$30) with its coding tool is far better value than Copilot 365, which shines mainly when an employer pays for it.
+    Start free on all three before paying: free Claude, free ChatGPT/Codex, free Copilot Chat. Pay only when you hit limits doing real work. If you're learning to code, Claude Pro or ChatGPT Plus (both $20/mo) with its coding tool is far better value than Copilot in Microsoft 365, which shines mainly when an employer pays for it.
   </div>
 
   <h2>Sources</h2>
-  <p style="font-size:0.9rem">Pricing and limit details checked 11 July 2026 against:
+  <p style="font-size:0.9rem">Pricing and limit details checked 31 October 2026 against:
     <a href="https://claude.com/pricing">Claude pricing</a> ·
-    <a href="https://intuitionlabs.ai/articles/claude-max-plan-pricing-usage-limits">Claude plan limits</a> ·
+    <a href="https://code.claude.com/docs/en/setup">Claude Code setup</a> ·
     <a href="https://chatgpt.com/pricing/">ChatGPT plans</a> ·
-    <a href="https://help.openai.com/en/articles/11369540-using-codex-with-your-chatgpt-plan">Codex with ChatGPT plans</a> ·
-    <a href="https://chatgpt.com/codex/pricing/">Codex pricing</a> ·
-    <a href="https://developers.openai.com/codex/changelog">Codex changelog (9 July 2026 merger)</a> ·
+    <a href="https://learn.chatgpt.com/docs/pricing">Codex pricing and limits</a> ·
+    <a href="https://www.microsoft.com/en-us/copilot/pricing/business">Copilot for business pricing</a> ·
     <a href="https://www.microsoft.com/en-us/microsoft-365-copilot/pricing">Microsoft 365 Copilot pricing</a> ·
     <a href="https://support.microsoft.com/en-us/topic/what-s-the-difference-between-microsoft-copilot-free-and-copilot-in-microsoft-365-cfff4791-694a-4d90-9c9c-1eb3fb28e842">Copilot free vs paid</a>
   </p>

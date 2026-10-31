@@ -2,6 +2,8 @@
 
 A small static website that explains AI and large language models for complete beginners: tokens, training, prompting, and agents - with interactive demos and a game layer (points, levels, badges, and quizzes on every page; progress saves in the browser via localStorage). No frameworks, no build step; just HTML, CSS and vanilla JavaScript.
 
+**Live version:** https://dcodeaus.github.io/aiExplained/
+
 ## Pages
 
 - `index.html` - home, the 60-second version, myths busted
@@ -22,7 +24,7 @@ A small static website that explains AI and large language models for complete b
 3. In the repository, go to **Settings → Pages**.
 4. Under **Build and deployment**, set Source to **Deploy from a branch**, choose the `main` branch and `/ (root)` folder, then **Save**.
 5. Wait a minute or two. Your site will be live at:
-   `https://<your-username>.github.io/ai-explained/`
+   `https://<your-username>.github.io/<repository-name>/` (this copy is at `https://dcodeaus.github.io/aiExplained/`)
 
 Any time you edit and commit a file, the site updates automatically within a few minutes.
 
